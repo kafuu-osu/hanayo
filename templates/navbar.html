@@ -1,12 +1,11 @@
 {{ define "navbar" }}
 {{ $isRAP   := and (hasAdmin .Context.User.Privileges) (isRAP .Path) }}
 {{ $isAdmin := hasAdmin .Context.User.Privileges }}
-{{ $isClan := qb "SELECT user, clan FROM user_clans WHERE user = ?" .Context.User.ID }}
 {{ $ds      := band .ClientFlags 1 }}
 <div class="ui secondary fixed-height stackable white background main menu no margin bottom{{ if .DisableHH }} dropped{{ end }}" id="navbar">
 	<div class="ui container">
 		<div class="item">
-			<b><a href="/" title="{{ .T "Home page" }}"><img class="ripple logo" src="/static/logos/text-{{ if $ds }}white{{ else }}black{{ end }}.png" alt="Ainu"></a></b>
+			<b><a href="/" title="{{ .T "Home page" }}"><img class="ripple logo" src="/static/logos/text-{{ if $ds }}white{{ else }}black{{ end }}.png" alt="Ripple"></a></b>
 		</div>
 		{{ if $isRAP }}
 			{{/*
@@ -19,20 +18,22 @@
 			{{ navbarItem .Path (.T "Leaderboard") "/leaderboard" }}
 			<div class="ui dropdown item">
 				<span>{{ .T "Community" }}</span>
-                <div class="menu">
-                    {{ navbarItem .Path (.T "Multiplayer listing") "https://multi.ainu.pw" }}
-                    {{/* {{ navbarItem .Path (.T "Tournaments") "https://tourn.ainu.pw" }} */}}
-                    <div class="divider"></div>
-                    {{ navbarItem .Path (.T "Discord Server") .Conf.DiscordServer }}
-                </div>
-            </div>
-            <div class="ui dropdown item">
+				<div class="menu">
+					{{/* navbarItem .Path (.T "Multiplayer listing") "https://vinse.ripple.moe" */}}
+					{{/* {{ navbarItem .Path (.T "Tournaments") "https://tourn.ripple.moe" }} */}}
+					<div class="divider"></div>
+					{{ navbarItem .Path (.T "Discord Server") "https://discord.gg/UuZcRwp" }}
+				</div>
+			</div>
+			<div class="ui dropdown item">
 				<span>{{ .T "Help" }}</span>
 				<div class="menu">
 					{{ navbarItem .Path (.T "About") "/about" }}
 					{{ navbarItem .Path (.T "Rules") "/doc/rules" }}
 					{{ navbarItem .Path (.T "Documentation") "/doc" }}
-					<a class="item" href="{{ .T "/static/serverswitcher_en.exe" }}">{{ .T "Server switcher" }}</a>
+					{{ navbarItem .Path (.T "Server switcher") "http://dl.ussr.pl/files/osu/ROS.exe" }}
+					<div class="divider"></div>
+					{{/* navbarItem .Path (.T "Contact support") "https://discord.gg/5auu8gv" */}}
 				</div>
 			</div>
 			{{ if .Context.User.Username }}
@@ -42,25 +43,10 @@
 					{{ navbarItem .Path (.T "Request beatmap ranking") "/beatmaps/rank_request" }}
 				</div>
 			</div>
-			<div class="ui dropdown item">
-				<span>{{ .T "Clans" }}</span>
-				<div class="menu">
-					{{ navbarItem .Path (.T "Clan Leaderboard") "/clans?mode=0" }}
-					{{ if ($isClan) }}
-					{{ navbarItem .Path (.T "Clan Settings") "/settings/clansettings" }}
-					{{ else }}
-					{{ end }}
-					{{ if ($isClan) }}
-					{{ else }}
-					<div class="divider"></div>
-					{{ navbarItem .Path (.T "Create Clan") "/clans/create" }}
-					{{ end }}
-				</div>
-			</div>
 			{{ end }}
-			{{ navbarItem .Path (.T "Donate" | printf "<i class=\"red heart icon\"></i>%s") "/donate" }}
-			{{ if $isAdmin }}{{ navbarItem .Path (.T "AAP" | printf "<b>%s</b>") "https://old.ainu.pw/index.php?p=100" }}{{ end }}
-			{{ end }}
+			{{/* navbarItem .Path (.T "Donate" | printf "<i class=\"red heart icon\"></i>%s") "/donate" */}}
+			{{ if $isAdmin }}{{ navbarItem .Path (.T "Admin Panel" | printf "<b>%s</b>") "https://old.ussr.pl/index.php?p=100" }}{{ end }}
+		{{ end }}
 		<div class="firetrucking-right-menu">
 			<div class="item">
 				<div class="ui search" id="user-search">
@@ -77,7 +63,6 @@
 					<div class="menu">
 						{{ navbarItem .Path (.T "Profile") (printf "/u/%d" .Context.User.ID) }}
 						{{ navbarItem .Path (.T "Friends") "/friends" }}
-						{{ navbarItem .Path (.T "Your Followers") "/followers" }}
 						{{ navbarItem .Path (.T "Settings") "/settings" }}
 						{{ navbarItem .Path (.T "Log out") (printf "/logout?k=%s" (.Session.Get "logout")) }}
 					</div>

@@ -1,8 +1,14 @@
-# Hanayo ![build status](https://ci.zxq.co/api/badges/ripple/hanayo/status.svg)
+# Hanayo - RealistikOsu!'s frontend
 
-This repository has a mirror [here](https://github.com/osuripple/hanayo). The original repo is still [here](https://github.com/osuthailand/hanayo).
+This the the [frontend](https://ussr.pl/) of RealistikOsu!.
 
-## To fellow developers: this is not how you do it!
+It is based on Ainu's version of [hanayo](https://github.com/osuripple/hanayo).
+
+Some design elements have been taken from osuAkatsuki.
+
+![Website Screenshot](https://i.imgur.com/dHijOqI.png)
+
+## (Ripple Note) To fellow developers: this is not how you do it!
 
 The biggest flaw of hanayo are that when I set out to create it, I wanted to create a template system that:
 
