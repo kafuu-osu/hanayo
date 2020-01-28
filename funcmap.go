@@ -402,7 +402,7 @@ var funcMap = template.FuncMap{
 	"shift": func(n1, n2 int) int {
 		return n1 << uint(n2)
 	},
-	// calculateDonorPrice calculates the price of x donor months in euros.
+	// calculateDonorPrice calculates the price of x donor months in POUNDS I THINK.
 	"calculateDonorPrice": func(a float64) string {
 		return fmt.Sprintf("%.2f", math.Pow(a*30*0.2, 0.7))
 	},
