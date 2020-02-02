@@ -6,7 +6,7 @@ It is based on Ainu's version of [hanayo](https://github.com/osuripple/hanayo).
 
 Some design elements have been taken from osuAkatsuki.
 
-![Website Screenshot](https://i.imgur.com/dHijOqI.png)
+![Website Screenshot](http://im.ussr.online/5e373b25999d90.14380332-aone.png)
 
 ## (Ripple Note) To fellow developers: this is not how you do it!
 
