@@ -7,12 +7,35 @@ KyutGrill=homepage2.jpg
 {{ $cf := .ClientFlags }}
 {{ $ds := band $cf 1 }}
 {{ $   := . }}
+<style>
+	.status {
+		display: flex;
+    	font-size: 14px;
+    	font-weight: 500;
+    	z-index: 3;
+    	position: absolute;
+    	-webkit-transform: translateY(-100px) translateX(5px);
+    	transform: translateY(-100px) translateX(5px);
+    	padding: 2px 10px;
+    	color: #fff;
+    	margin-left: 5px;
+    	border-radius: 20px;
+    	background: rgba(0,0,0,.6);
+	}
+</style>
 <div class="ui container">
 	<div class=""> 
 	<div class="main-block">
 		<div class="eromanga-sensei"></div>
 		<div class="content">
-			<div class="status"></div>
+			<div class="status">
+				<span>
+					<span style="color: #4287f5;" class="counter-text"> {{ .T "%s" (rediget "ripple:registered_users")}} </span> total users
+				</span>
+				<span style="margin-left: 16px;">
+					<span class="counter-text" style="color: #eb4034;"> {{ .T "%s" (rediget "ripple:online_users")}} </span> online users
+				</span>
+			</div>
 			<br>
 			<span class="text-lg">
 				RealistikOsu!
@@ -21,8 +44,7 @@ KyutGrill=homepage2.jpg
 				<b>Welcome to RealistikOsu!</b>
 
 
-				RealistikOsu! is a private osu server with everything Bancho has to offer + more! We have our own community, our own beatmap ranking and a dedicated leadership team. Why hesitate? Join RealistikOsu! now!
-				{{ .T "We currently have <b>%s online users and %s total registered users.</b>" (rediget "ripple:online_users") (rediget "ripple:registered_users") | html }}
+				RealistikOsu! is a private osu! server with everything Bancho has to offer, Relax leaderboards and more! We have our own community, Relax leaderboards, Relax profiles, Relax PP system, our own beatmap ranking and a dedicated leadership team. Why hesitate? Join RealistikOsu! now!
 			</span>
 			<br>
 			<br>
