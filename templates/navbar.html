@@ -4,7 +4,6 @@
 {{ $isClanO := qb "SELECT user, clan FROM user_clans WHERE user = ? AND perms = 8" .Context.User.ID }}
 {{ $isClan := qb "SELECT user, clan FROM user_clans WHERE user = ?" .Context.User.ID }}
 {{ $ds      := band .ClientFlags 1 }}
-<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <div class="ui secondary fixed-height stackable white background main menu no margin bottom{{ if .DisableHH }} dropped{{ end }}" id="navbar">
 	<div class="ui container">
 		<div class="item">
@@ -52,7 +51,7 @@
 			</div>
 			{{ end }}
 			{{/* navbarItem .Path (.T "Donate" | printf "<i class=\"red heart icon\"></i>%s") "/donate" */}}
-			{{ navbarItem .Path (.T "Discord" | printf "<i class=\"fab fa-discord fa-lg\" style=\"margin-right: 10px; color: #7289da;\"></i>%s") "https://discord.gg/87E2K46" }}
+			{{ navbarItem .Path (.T "Discord" | printf "<img href=\"https://i.imgur.com/Ndy1UJs.png\" style=\"margin-right: 10px; color: #7289da;\"></img>%s") "https://discord.gg/87E2K46" }}
 			{{ if $isAdmin }}{{ navbarItem .Path (.T "Admin Panel" | printf "<b>%s</b>") "https://old.ussr.pl/index.php?p=100" }}{{ end }}
 		{{ end }}
 		<div class="firetrucking-right-menu">
