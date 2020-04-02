@@ -153,17 +153,12 @@
 								{{ $global.T "<b>%s</b> " .username | html }}
                     is an <i class="red lightning small icon"></i><b>Administrator</b>
                     {{ $global.T " from  <b>%s</b>." (country .country true) | html }}
-								{{else if $chatmod}}
-								{{ $global.T "<b>%s</b> " .username | html }}
-                    is a <i class="purple star small icon"></i><b>Chat Mod</b>
-                    {{ $global.T " from  <b>%s</b>." (country .country true) | html }}
+
 								{{else if $bat}}
 								{{ $global.T "<b>%s</b> " .username | html }}
                     is a <i class="orange music small icon"></i><b>BAT</b>
                     {{ $global.T " from  <b>%s</b>." (country .country true) | html }}
-                            {{else if $rmod}}
-                    {{ $global.T "<b>%s</b> " .username | html }}
-                    is a <i class="green star small icon"></i><b>Replay Moderator</b>
+
                     {{ $global.T " from  <b>%s</b>." (country .country true) | html }}
 							{{ else }}
 								{{ $global.T "<b>%s</b> is a player from  <b>%s</b>." .username (country .country true) | html }}
@@ -171,37 +166,7 @@
                     <br>{{ $global.T "They registered %s." (time $user.registered_on) | html }}
                     <br>{{ $global.T "Last seen: %s." (time $user.latest_activity) | html }}
                     <br>{{ with playstyle .play_style $global }}{{ $global.T "They play with %s." . }}{{ end }}
-                    <br>
-                    <h3 class="ui header">Ranks</h3>
-                    <div class="ui five column grid container">
-                        <div class="centered column">
-                            <img class="ui centered small image" alt="Ranks SS+" src="/static/ranking-icons/SSHD.png">
-                            <br>
-                            <p id="SSHDranks"></p>
-                        </div>
-                        <div class="centered column">
-                            <img class="ui centered small image" alt="Rank SS" src="/static/ranking-icons/SS.png">
-                            <br>
-                            <p id="SSranks"></p>
-                        </div>
-                        <div class="centered column">
-                            <img class="ui centered small image" alt="Rank S+" src="/static/ranking-icons/SHD.png">
-                            <br>
-                            <p id="SHDranks"></p>
-                        </div>
-                        <div class="centered column">
-                            <img class="ui centered small image" alt="Rank S" src="/static/ranking-icons/S.png">
-                            <br>
-                            <p id="Sranks"></p>
-                        </div>
-                        <div class="centered column">
-                            <img class="ui centered small image" alt="Rank A" src="/static/ranking-icons/A.png">
-                            <br>
-                            <p id="Aranks"></p>
-                        </div>
-                    </div>
-
-                </div>
+		    <br>
                 <div class="column">
                     {{ if and (not .badges) (not .custom_badge) }}
 								{{ $global.T "This user hasn't got any badges!" }}
