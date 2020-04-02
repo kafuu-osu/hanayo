@@ -12,7 +12,6 @@ $(document).ready(function () {
     else if (wl.pathname != newPathName)
         window.history.replaceState('', document.title, newPathName + wl.search + wl.hash);
 
-    loadRanksPLZ(userID, favouriteMode);
     setDefaultScoreTable();
     // when an item in the mode menu is clicked, it means we should change the mode.
     $("#mode-menu>.item").click(function (e) {
@@ -25,21 +24,15 @@ $(document).ready(function () {
         $("#mode-menu>.active.item").removeClass("active");
         var needsLoad = $("#scores-zone>[data-mode=" + m + "][data-loaded=0]");
         if (needsLoad.length > 0)
-	        initRecentActivity($("#recent-activity>div[data-mode=" + m + "]"), m)
-            initialiseTopScores($("#top-scores-zone>div[data-mode=" + m + "]"), m)
             initialiseScores(needsLoad, m);
         $(this).addClass("active");
         window.history.replaceState('', document.title, wl.pathname + "?mode=" + m + wl.hash);
-        loadRanksPLZ(userID, m);
     });
-    initialiseAchievements();
     initialiseFriends();
     $('.kr-tab').tab()
     // load scores page for the current favourite mode
     var i = function () {
-        initRecentActivity($("#recent-activity>div[data-mode=" + favouriteMode + "]"), favouriteMode)
         initialiseScores($("#scores-zone>div[data-mode=" + favouriteMode + "]"), favouriteMode)
-        initialiseTopScores($("#top-scores-zone>div[data-mode=" + favouriteMode + "]"), favouriteMode)
     };
     if (i18nLoaded)
         i();
@@ -48,79 +41,6 @@ $(document).ready(function () {
             i();
         });
 });
-
-function loadRanksPLZ(userid, mode) {
-    api("scores/relax/ranksget", {userid: userid, mode: mode}, (res) => {
-        $("#SSHDranks").text(res.sshd);
-        $("#SSranks").text(res.ss);
-        $("#SHDranks").text(res.sh);
-        $("#Sranks").text(res.s);
-        $("#Aranks").text(res.a);
-    })
-}
-
-function initialiseAchievements() {
-    api('users/achievements',
-        {id: userID}, function (resp) {
-            var achievements = resp.achievements;
-            // no achievements -- show default message
-            if (achievements.length === 0) {
-                $("#achievements")
-                    .append($("<div class='ui sixteen wide column'>")
-                        .text(T("Nothing here. Yet.")));
-                $("#load-more-achievements").remove();
-                return;
-            }
-
-            var displayAchievements = function (limit, achievedOnly) {
-                var $ach = $("#achievements").empty();
-                limit = limit < 0 ? achievements.length : limit;
-                var shown = 0;
-                for (var i = 0; i < achievements.length; i++) {
-                    var ach = achievements[i];
-                    if (shown >= limit || (achievedOnly && !ach.achieved)) {
-                        continue;
-                    }
-                    shown++;
-                    $ach.append(
-                        $("<div class='ui two wide column'>").append(
-                            $("<img src='https://s.ussr.pl/achievements/" + ach.icon + ".png' alt='" + ach.name +
-                                "' class='" +
-                                (!ach.achieved ? "locked-achievement" : "achievement") +
-                                "'>").popup({
-                                title: ach.name,
-                                content: ach.description,
-                                position: "bottom center",
-                                distanceAway: 10
-                            })
-                        )
-                    );
-                }
-                // if we've shown nothing, and achievedOnly is enabled, try again
-                // this time disabling it.
-                if (shown == 0 && achievedOnly) {
-                    displayAchievements(limit, false);
-                }
-            };
-
-            // only 8 achievements - we can remove the button completely, because
-            // it won't be used (no more achievements).
-            // otherwise, we simply remove the disabled class and add the click handler
-            // to activate it.
-            if (achievements.length <= 8) {
-                $("#load-more-achievements").remove();
-            } else {
-                $("#load-more-achievements")
-                    .removeClass("disabled")
-                    .click(function () {
-                        $(this).remove();
-                        displayAchievements(-1, false);
-                    });
-            }
-            displayAchievements(8, true);
-        });
-}
-
 
 function initialiseFriends() {
     var b = $("#add-friend-button");
@@ -170,7 +90,6 @@ function friendClick() {
 }
 
 var defaultScoreTable;
-var recentActivityTable;
 
 function setDefaultScoreTable() {
     defaultScoreTable = $("<table class='ui table score-table' />")
@@ -197,18 +116,7 @@ function setDefaultScoreTable() {
             )
         )
     ;
-    recentActivityTable = $("<table class='ui table score-table' />")
-        .append(
-            $("<thead />").append(
-                $("<tr />").append(
-                    $("<th>" + T("Message") + "</th>"),
-                    $("<th>" + T("Time") + "</th>")
-                )
-            )
-        )
-        .append(
-            $("<tbody />")
-        );
+
 }
 
 i18next.on('loaded', function (loaded) {
@@ -216,39 +124,45 @@ i18next.on('loaded', function (loaded) {
 });
 
 function initialiseScores(el, mode) {
-    el.attr("data-loaded", "1");
-    var best = defaultScoreTable.clone(true).addClass("orange");
-    var recent = defaultScoreTable.clone(true).addClass("blue");
-    best.attr("data-type", "best");
-    recent.attr("data-type", "recent");
-    recent.addClass("no bottom margin");
-    el.append($("<div class='ui segments no bottom margin' />").append(
-        $("<div class='ui segment' />").append("<h2 class='ui header'>" + T("Best scores") + "</h2>", best),
-        $("<div class='ui segment' />").append("<h2 class='ui header'>" + T("Recent scores") + "</h2>", recent)
-    ));
-    loadScoresPage("best", mode);
-    loadScoresPage("recent", mode);
+	el.attr("data-loaded", "1");
+	var best = defaultScoreTable.clone(true).addClass("orange");
+	var recent = defaultScoreTable.clone(true).addClass("blue");
+	var mostPlayedBeatmapsTable = $("<table class='ui table F-table yellow' data-mode='" + mode + "' />")
+			.append(
+					$("<thead />").append(
+							$("<tr />").append(
+									$("<th>"+ T("Beatmap") + "</th>"),
+									$("<th class='right aligned'>"+ T("Plays") + "</th>")
+							)
+					)
+			)
+			.append(
+					$('<tbody />')
+			)
+			.append(
+					$("<tfoot />").append(
+							$("<tr />").append(
+									$("<th colspan=2 />").append(
+											$("<div class='ui right floated pagination menu' />").append(
+													$("<a class='load-more disabled item'>" + T("Load more") + "</a>").click(loadMoreMostPlayed)
+											)
+									)
+							)
+					)
+			)
+	best.attr("data-type", "best");
+	recent.attr("data-type", "recent");
+	mostPlayedBeatmapsTable.attr("data-type", "most-played");
+	recent.addClass("no bottom margin");
+	el.append($("<div class='ui segments no bottom margin' />").append(
+		$("<div class='ui segment' />").append("<h2 class='ui header'>	" + T("Best scores") + "</h2>", best),
+		$("<div class='ui segment' />").append("<h2 class='ui header'>" + T("Recent scores") + "</h2>", recent)
+	));
+	loadScoresPage("best", mode);
+	loadScoresPage("recent", mode);
 };
 
-function initialiseTopScores(el, mode) {
-    el.attr("data-loaded", "1");
-    var topscores = defaultScoreTable.clone(true).addClass("red");
-    topscores.attr("data-type", "top-scores");
-    el.append($("<div class='ui segments no bottom margin' />").append(
-        $("<div class='ui segment' />").append("<h2 class='ui header'>" + T("First places") + "</h2>", topscores),
-    ));
-    loadTopScoresPage("top-scores", mode);
-};
 
-function initRecentActivity(el, mode) {
-    el.attr("data-loaded", "1");
-    var recentActivity = recentActivityTable.clone(true).addClass("green");
-    recentActivity.attr("data-type", "rac");
-    el.append($("<div class='ui segments no bottom margin' />").append(
-        $("<div class='ui segment' />").append("<h2 class='ui header'>" + T("Recent Activity") + "</h2>", recentActivity),
-    ));
-    loadRecentActivity("rac", mode)    
-}
 
 function loadMoreClick() {
     var t = $(this);
@@ -275,70 +189,6 @@ var currentPage = {
     3: {best: 0, recent: 0, top: 0},
 };
 var scoreStore = {};
-var topScoreStore = {};
-
-function loadTopScoresPage(type, mode) {
-    var table = $("#top-scores-zone div[data-mode=" + mode + "] table[data-type=" + type + "] tbody");
-    var page = ++currentPage[mode][type];
-    api("users/first_scores/relax", {
-        mode: mode,
-        p: page,
-        l: 20,
-        id: userID,
-    }, function (r) {
-        if (r.scores == null) {
-            disableTopLoadMoreButton(type, mode);
-            return;
-        }
-        r.scores.forEach(function (v, idx) {
-            topScoreStore[v.id] = v;
-            if (v.completed == 0) {
-            } else {
-                var scoreRank = getRank(mode, v.mods, v.accuracy, v.count_300, v.count_100, v.count_50, v.count_miss);
-            }
-            table.append($("<tr class='new score-row' data-scoreid='" + v.id + "' />").append(
-                $(
-                    "<td><img src='/static/ranking-icons/" + scoreRank + ".png' class='score rank' alt='" + scoreRank + "'> " +
-                    escapeHTML(v.beatmap.song_name) + " <b>" + getScoreMods(v.mods) + "</b> <i>(" + v.accuracy.toFixed(2) + "%)</i><br />" +
-                    "<div class='subtitle'><time class='new timeago' datetime='" + v.time + "'>" + v.time + "</time></div></td>"
-                ),
-                $("<td><b>" + ppOrScore(v.pp, v.score) + "</b> " + weightedPP(type, page, idx, v.pp) + (v.completed == 3 ? "<br>" + downloadStar(v.id) : "") + "</td>")
-            ));
-        });
-        $(".new.timeago").timeago().removeClass("new");
-        $(".new.score-row").click(viewTopScoreInfo).removeClass("new");
-        $(".new.downloadstar").click(function (e) {
-            e.stopPropagation();
-        }).removeClass("new");
-        var enable = true;
-        if (r.scores.length != 20)
-            enable = false;
-        disableTopLoadMoreButton(type, mode, enable);
-    });
-}
-
-function loadRecentActivity(type, mode) {
-    var table = $("#recent-activity div[data-mode=" + mode + "] table[data-type=" + type + "] tbody");
-    api("users/get_activity", {
-        mode: mode,
-        userid: userID,
-    }, function (r) {
-        if(!r.logs) {
-        	return;
-	}
-        r.logs.forEach(function (v, idx) {
-            table.append($("<tr class='new score-row'/>").append(
-                $(
-                    "<td><img src='/static/ranking-icons/" + v.rank + ".png' class='score rank' alt='" + v.rank + "'> " +
-                    escapeHTML(v.body) + "<a href='https://ussr.pl/b/"+v.beatmap_id+"'>"+ escapeHTML(v.song_name) + "</a> <br />"
-                ),
-                $("<td><time class='new timeago' datetime='" + v.time + "'>" + v.time + "</time></td>")
-            ));
-        });
-        $(".new.timeago").timeago().removeClass("new");
-        $(".new.score-row").removeClass("new");
-    });
-}
 
 function loadScoresPage(type, mode) {
     var table = $("#scores-zone div[data-mode=" + mode + "] table[data-type=" + type + "] tbody");
@@ -428,12 +278,6 @@ function weightedPP(type, page, idx, pp) {
     return "<i title='Weighted PP, " + Math.round(perc * 100) + "%'>(" + wpp.toFixed(2) + "pp)</i>";
 }
 
-function disableTopLoadMoreButton(type, mode, enable) {
-    var button = $("#top-scores-zone div[data-mode=" + mode + "] table[data-type=" + type + "] .load-more-button");
-    if (enable) button.removeClass("disabled");
-    else button.addClass("disabled");
-}
-
 function disableLoadMoreButton(type, mode, enable) {
     var button = $("#scores-zone div[data-mode=" + mode + "] table[data-type=" + type + "] .load-more-button");
     if (enable) button.removeClass("disabled");
@@ -495,97 +339,6 @@ function viewScoreInfo() {
     $("#score-data-table").append(els);
     $(".ui.modal").modal("show");
 }
-
-function viewTopScoreInfo() {
-    var scoreid = $(this).data("scoreid");
-    if (!scoreid && scoreid !== 0) return;
-    var s = topScoreStore[scoreid];
-    if (s === undefined) return;
-
-    // data to be displayed in the table.
-    var data = {
-        "Points": addCommas(s.score),
-        "PP": addCommas(s.pp),
-        "Beatmap": "<a href='/b/" + s.beatmap.beatmap_id + "'>" + escapeHTML(s.beatmap.song_name) + "</a>",
-        "Accuracy": s.accuracy + "%",
-        "Max combo": addCommas(s.max_combo) + "/" + addCommas(s.beatmap.max_combo)
-            + (s.full_combo ? " " + T("(full combo)") : ""),
-        "Difficulty": T("{{ stars }} star", {
-            stars: s.beatmap.difficulty2[modesShort[s.play_mode]],
-            count: Math.round(s.beatmap.difficulty2[modesShort[s.play_mode]]),
-        }),
-        "Mods": getScoreMods(s.mods, true),
-    };
-
-    // hits data
-    var hd = {};
-    var trans = modeTranslations[s.play_mode];
-    [
-        s.count_300,
-        s.count_100,
-        s.count_50,
-        s.count_geki,
-        s.count_katu,
-        s.count_miss,
-    ].forEach(function (val, i) {
-        hd[trans[i]] = val;
-    });
-
-    data = $.extend(data, hd, {
-        "Ranked?": T(s.completed == 3 ? "Yes" : "No"),
-        "Achieved": s.time,
-        "Mode": modes[s.play_mode],
-    });
-
-    var els = [];
-    $.each(data, function (key, value) {
-        els.push(
-            $("<tr />").append(
-                $("<td>" + T(key) + "</td>"),
-                $("<td>" + value + "</td>")
-            )
-        );
-    });
-
-    $("#score-data-table tr").remove();
-    $("#score-data-table").append(els);
-    $(".ui.modal").modal("show");
-}
-
-var modeTranslations = [
-    [
-        "300s",
-        "100s",
-        "50s",
-        "Gekis",
-        "Katus",
-        "Misses"
-    ],
-    [
-        "GREATs",
-        "GOODs",
-        "50s",
-        "GREATs (Gekis)",
-        "GOODs (Katus)",
-        "Misses"
-    ],
-    [
-        "Fruits (300s)",
-        "Ticks (100s)",
-        "Droplets",
-        "Gekis",
-        "Droplet misses",
-        "Misses"
-    ],
-    [
-        "300s",
-        "200s",
-        "50s",
-        "Max 300s",
-        "100s",
-        "Misses"
-    ]
-];
 
 // helper functions copied from user.js in old-frontend
 function getScoreMods(m, noplus) {
