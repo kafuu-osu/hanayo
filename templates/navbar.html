@@ -37,8 +37,6 @@
 					{{ navbarItem .Path (.T "Rules") "/doc/rules" }}
 					{{ navbarItem .Path (.T "Documentation") "/doc" }}
 					{{ navbarItem .Path (.T "Server switcher") "http://dl.ussr.pl/files/osu/ROS.exe" }}
-					<div class="divider"></div>
-					{{/* navbarItem .Path (.T "Contact support") "https://discord.gg/5auu8gv" */}}
 					{{ navbarItem .Path (.T "Our Team") "/team" }}
 				</div>
 			</div>
@@ -51,8 +49,7 @@
 			</div>
 			{{ end }}
 			{{/* navbarItem .Path (.T "Donate" | printf "<i class=\"red heart icon\"></i>%s") "/donate" */}}
-			{{ navbarItem .Path (.T "Discord" | printf "<i class=\"discord icon\" style=\"margin-right: 10px; color: #7289da;\"></i>%s") "https://discord.gg/87E2K46" }}
-			{{ if $isAdmin }}{{ navbarItem .Path (.T "Admin Panel" | printf "<b>%s</b>") "https://old.ussr.pl/index.php?p=100" }}{{ end }}
+			{{ if $isAdmin }}{{ navbarItem .Path (.T "Admin Panel" | printf "<b>%s</b>") "https://old.ussr.pl" }}{{ end }}
 		{{ end }}
 		<div class="firetrucking-right-menu">
 			<div class="item">
