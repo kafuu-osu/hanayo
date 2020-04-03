@@ -2,7 +2,7 @@
     width:100%;
     min-height:145px;
     display:inline-block;
-    background:#5a5555;
+    background:#212121;
     overflow:hidden;
     position:relative;
     border-radius:20px;
@@ -14,6 +14,10 @@
     background-color:rgba(0,0,0,.25);
     border-radius:10px;
     padding:25px 10px
+}
+i.icon.download:before{
+    content: "\f019";
+    color: #fff!important;
 }
 .status{
     font-weight:500;
@@ -82,7 +86,7 @@
     margin:10px 5px
 }
 .creator{
-    color:#000;
+    color:#fff;
     float:left;
     margin:9px 9px 9px 18px
 }
