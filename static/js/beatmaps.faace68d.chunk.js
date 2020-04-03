@@ -281,7 +281,7 @@
                                 className: "ui active dimmer"
                             }, n.a.createElement("div", {
                                 className: "ui text loader"
-                            }, "Loading")) : this.renderDummyData()))
+                            }, "Loading")) : this.renderDummyData())))
                         }
                     }]), t
                 }(s.Component);
