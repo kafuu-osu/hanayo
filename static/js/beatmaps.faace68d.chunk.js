@@ -281,7 +281,7 @@
                                 onClick: this.switchRank.bind(this),
                                 className: 5 === this.state.status ? "clicked" : "",
                                 "data-rankstatus": "5",
-                                href: "#"
+                                href: "#")
                             }, this.state.loading ? n.a.createElement("div", {
                                 className: "ui active dimmer"
                             }, n.a.createElement("div", {
