@@ -92,6 +92,39 @@ KyutGrill=homepage2.jpg
 	         </div>
 	     </div>
 	</div>
+	<div class="ui segments" style="height: 100%;">
+		<div class="sixteen wide column">
+			<div class="ui yellow segment">
+				<div class="ui grid">
+					<div class="four wide column">
+						<i class="thumbs up icon status-icon"></i>
+					</div>
+					<div class="twelve wide column">
+						{{ $d := (qb "SELECT ROUND(pp) AS pp, users.username, users.id FROM scores INNER JOIN users ON scores.userid = users.id WHERE scores.play_mode = 0 AND completed = 3 AND users.privileges > 2 ORDER BY pp DESC LIMIT 1") }}
+						<p class="status-head">{{ $d.pp }}pp</p>
+						<p class="status-head" style="font-size: 10px!important;">{{ .T "Done by " }}<a href="/u/{{ $d.id }}">{{ $d.username }}</a></p>
+						<p class="status-footer">{{ .T "Top Score" }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="sixteen wide column">
+			<div class="ui pink segment">
+				<div class="ui grid">
+					<div class="four wide column">
+						<i class="user icon status-icon"></i>
+					</div>
+					<div class="twelve wide column">
+						 {{ $value := (qb "SELECT ROUND(SUM(scores.pp)) AS pp FROM scores INNER JOIN users ON scores.userid = users.id WHERE scores.completed = 3 AND scores.play_mode = 0 AND users.privileges > 2") }}
+					<p class="status-head">{{ $value.pp }}</p>
+					<p class="status-footer">{{ .T "Total PP" }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div> {{/* Global Stats end past this /div */}}
 
 
 {{ end }}

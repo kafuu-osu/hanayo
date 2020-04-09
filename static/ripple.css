@@ -843,3 +843,20 @@ body {
     color: rgba(0, 0, 0, .87);
     font-smoothing: antialiased
 }
+
+.status-head {
+    padding:0;
+    margin: 0;
+    text-align: right; 
+    font-size: 35px;
+}
+
+.status-footer {
+    font-size: 20px;
+    text-align: right;
+}
+
+.status-icon {
+    font-size: 4em!important;
+    padding-top: 30px;
+}
