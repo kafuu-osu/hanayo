@@ -87,7 +87,11 @@ KyutGrill=homepage2.jpg
 						</div>
 						<div class="twelve wide column">
 							{{ range $key, $value := (qb "SELECT username FROM users WHERE privileges >=3 ORDER BY id DESC LIMIT 1") }}
-							<p class="status-head" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{ $value }}</p>
+							{{ range $key, $valu := (qb "SELECT id FROM users WHERE privileges >=3 ORDER BY id DESC LIMIT 1") }}
+							<p class="status-head" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+								<a href="/u/{{ $valu }}" style="color: inherit;">{{ $value }}</a>
+							</p>
+							{{ end }}
 							{{ end }}
 							<p class="status-footer">{{ .T "Latest Player" }}</p>
 						</div>
@@ -120,12 +124,13 @@ KyutGrill=homepage2.jpg
 				<div class="ui pink segment">
 					<div class="ui grid">
 						<div class="four wide column">
-							<i class="user icon status-icon"></i>
+							<i class="thumbs up icon status-icon"></i>
 						</div>
 						<div class="twelve wide column">
-							 {{ $value := (qb "SELECT ROUND(SUM(scores.pp)) AS pp FROM scores INNER JOIN users ON scores.userid = users.id WHERE scores.completed = 3 AND scores.play_mode = 0 AND users.privileges > 2") }}
-						<p class="status-head">{{ $value.pp }}</p>
-						<p class="status-footer">{{ .T "Total PP" }}</p>
+							{{ $rx := (qb "SELECT ROUND(pp) AS pp, users.username, users.id FROM scores_relax INNER JOIN users ON scores_relax.userid = users.id WHERE scores_relax.play_mode = 0 AND completed = 3 AND users.privileges > 2 ORDER BY pp DESC LIMIT 1") }}
+							<p class="status-head">{{ $rx.pp }}pp</p>
+							<p class="status-head" style="font-size: 10px!important;">{{ .T "Done by " }}<a href="/u/{{ $rx.id }}">{{ $rx.username }}</a></p>
+							<p class="status-footer">{{ .T "Top Relax Score" }}</p>
 						</div>
 					</div>
 				</div>
