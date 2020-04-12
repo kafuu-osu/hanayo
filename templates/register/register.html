@@ -1,4 +1,5 @@
 {{ define "tpl" }}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <div class="ui container">
 	{{ $regEnabled := qb "SELECT value_int FROM system_settings WHERE name = 'registrations_enabled'" }}
 	{{ if .Context.User.ID }}
@@ -33,7 +34,7 @@
 						</div>
 						{{ with config "RecaptchaSite" }}
 						<div class="field">
-							<div class="g-recaptcha" data-sitekey="{{ . }}"></div>
+							<div class="g-recaptcha" data-sitekey="{{ . }}" data-theme="dark"></div>
 						</div>
 						{{ end }}
 						{{ ieForm .Gin }}
