@@ -522,7 +522,7 @@ msgstr "<a href='https://blog.ripple.moe'>블로그</a> 를 통해 새로운 소
 
 # base.html
 msgid ""
-"Ripple's score submission is currently in maintenance mode. You will not be "
+"RealistikOsu!'s score submission is currently in maintenance mode. You will not be "
 "allowed to submit scores for the time being."
 msgstr "현재 서버 점검중입니다. 당분간 기록이 제출되지 않습니다."
 
@@ -534,7 +534,7 @@ msgstr "현재 리플 웹사이트는 점검중 입니다. 당분간 소수의 �
 #, fuzzy
 msgid ""
 "Your account is currently in restricted mode. You will not be able to do "
-"certain actions, and your profile can only be seen by you and by Ripple's "
+"certain actions, and your profile can only be seen by you and by RealistikOsu!'s "
 "staff. If you believe we have mistaken putting you in restricted mode, or a "
 "month has passed since you first saw this, then you can send an appeal at <a "
 "href='https://support.ripple.moe'>support.ripple.moe</a>."
@@ -800,10 +800,10 @@ msgstr "삭제"
 
 # irc.html
 msgid ""
-"Here you can generate a new IRC token. You can use it to connect to Ripple's "
+"Here you can generate a new IRC token. You can use it to connect to RealistikOsu!'s "
 "chat using IRC. Remember that your IRC token is like a password, anyone who "
 "knows it, has access to your account. If you're interested knowing how to "
-"connect to Ripple's chat via IRC, you may want to check out <a href=\"/doc/"
+"connect to RealistikOsu!'s chat via IRC, you may want to check out <a href=\"/doc/"
 "11\">this</a>."
 msgstr ""
 "여기서 당신의 IRC 코드를 발급받으실 수 있습니다. 이 토큰을 이용해 IRC에서 RealistikOsu! 채팅에 연결할 수 있습니다. 이 토큰을 "
