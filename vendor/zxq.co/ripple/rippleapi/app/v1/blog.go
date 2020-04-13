@@ -86,7 +86,7 @@ func init() {
 	gob.Register([]blogPost{})
 }
 
-// BlogPostsGET retrieves the latest blog posts on the Ripple blog.
+// BlogPostsGET retrieves the latest blog posts on the RealistikOsu! blog.
 func BlogPostsGET(md common.MethodData) common.CodeMessager {
 	// check if posts are cached in redis
 	res := md.R.Get("api:blog_posts").Val()

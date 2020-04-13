@@ -74,7 +74,7 @@ var randomSentences = [...]string{
 	"Feelin' groovy!",
 	"sudo rm -rf /",
 	"Hi! I'm Flowey! Flowey the flower!",
-	"Ripple devs are actually cats",
+	"RealistikOsu! devs are actually cats",
 	"Support Howl's fund for buying a power supply for his SSD!",
 	"Superman dies",
 	"PP when?",

@@ -374,7 +374,7 @@ func generateRecoveryCodes() []string {
 
 func generateKey(ctx context) *otp.Key {
 	k, err := totp.Generate(totp.GenerateOpts{
-		Issuer:      "Ripple",
+		Issuer:      "RealistikOsu!",
 		AccountName: ctx.User.Username,
 	})
 	if err != nil {

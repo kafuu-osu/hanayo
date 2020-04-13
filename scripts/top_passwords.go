@@ -38,7 +38,7 @@ func main() {
 	s := bufio.NewScanner(resp.Body)
 
 	for s.Scan() {
-		// passwords shorter than 8 characters aren't allowed on ripple anyway.
+		// passwords shorter than 8 characters aren't allowed on RealistikOsu! anyway.
 		if len(s.Text()) < 8 {
 			continue
 		}

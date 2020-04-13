@@ -1,4 +1,4 @@
-// Package v1 implements the first version of the Ripple API.
+// Package v1 implements the first version of the RealistikOsu! API.
 package v1
 
 import (

@@ -433,7 +433,7 @@ $(document)
       $(".twemoji").each(function(k, v) { twemoji.parse(v); });
     }
 
-    // ripple stuff
+    // RealistikOsu! stuff
     var f = singlePageSnippets[window.location.pathname];
     if (typeof f === 'function')
       f();
@@ -538,7 +538,7 @@ function _api(base, endpoint, data, success, failure, post, handleAllFailures) {
   handleAllFailures = (typeof handleAllFailures !== undefined) ? handleAllFailures : false;
 
   var errorMessage =
-      "An error occurred while contacting the Ripple API. Please report this to a Ripple developer.";
+      "An error occurred while contacting the RealistikOsu! API. Please report this to a RealistikOsu! developer.";
 
   $.ajax({
     method : (post ? "POST" : "GET"),
@@ -750,7 +750,7 @@ function query(name, url) {
   return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-// Useful for forms contacting the Ripple API
+// Useful for forms contacting the RealistikOsu! API
 function formToObject(form) {
   var inputs = form.find("input, textarea, select");
   var obj = {};

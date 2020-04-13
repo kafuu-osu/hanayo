@@ -1,6 +1,6 @@
 // +build windows
 
-// The Ripple API on Windows is not officially supported and you're probably
+// The RealistikOsu! API on Windows is not officially supported and you're probably
 // gonna swear a lot if you intend to use it on Windows. Caveat emptor.
 
 package main

@@ -31,12 +31,12 @@ func init() {
 var db *sqlx.DB
 
 func main() {
-	err := agplwarning.Warn("ripple", "Ripple API")
+	err := agplwarning.Warn("RealistikOsu!", "RealistikOsu! API")
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	fmt.Print("Ripple API")
+	fmt.Print("RealistikOsu! API")
 	if Version != "" {
 		fmt.Print("; git commit hash: ", Version)
 	}
@@ -47,7 +47,7 @@ func main() {
 		return
 	}
 
-	schiavo.Prefix = "Ripple API"
+	schiavo.Prefix = "RealistikOsu! API"
 
 	if !strings.Contains(conf.DSN, "parseTime=true") {
 		c := "?"

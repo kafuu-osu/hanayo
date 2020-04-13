@@ -99,7 +99,7 @@ var (
 )
 
 func main() {
-	err := agplwarning.Warn("ripple", "Hanayo")
+	err := agplwarning.Warn("RealistikOsu!", "Hanayo")
 	if err != nil {
 		fmt.Println(err)
 	}

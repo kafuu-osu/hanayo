@@ -3,7 +3,7 @@ package playstyle
 
 import "strings"
 
-// PlayStyle is a bitwise enum containing the instruments a Ripple user likes
+// PlayStyle is a bitwise enum containing the instruments a RealistikOsu! user likes
 // to play with.
 type PlayStyle int
 

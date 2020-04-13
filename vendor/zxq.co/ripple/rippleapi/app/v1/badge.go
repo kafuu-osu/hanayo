@@ -17,7 +17,7 @@ type multiBadgeData struct {
 	Badges []singleBadge `json:"badges"`
 }
 
-// BadgesGET retrieves all the badges on this ripple instance.
+// BadgesGET retrieves all the badges on this RealistikOsu! instance.
 func BadgesGET(md common.MethodData) common.CodeMessager {
 	var (
 		r    multiBadgeData
