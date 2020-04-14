@@ -36,6 +36,9 @@
 	box-shadow: -1px 2px 2px 1px rgba(0, 0, 0, 0.51);
     display: inline-flex;
     /*overflow: hidden;*/
+    /*woman.png adjustments by rel, noting this as these changes may break things*/
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .ui.grid {
@@ -273,6 +276,8 @@ margin-bottom: 5px;
     width: 900px;
     transform: translate(-20px, 0px);
     background-size: 300px;
+    -webkit-mask-image: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 20%);
+    mask-image: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 20%); /*For compatibillity*/
 }
 
 .content {
