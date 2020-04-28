@@ -228,7 +228,7 @@ starteffect()
 							<br>{{ $global.T "Last seen: %s." (time $user.latest_activity) | html }}
 							<br>{{ with playstyle .play_style $global }}{{ $global.T "They play with %s." . }}{{ end }}
 						</div>
-						
+							<meta name="og:image" content="https://a.ussr.pl/{{$user.id}}"/>
  							<meta property="og:type" content="website" />
 							<meta property="og:url" content="https://ussr.pl/u/{{$user.id}}" />
 							<meta property="og:title" content={{ $global.T "<b>%s</b>" .username}} />
