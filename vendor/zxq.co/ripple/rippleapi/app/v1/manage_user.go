@@ -9,7 +9,7 @@ import (
 	"time"
 
 	redis "gopkg.in/redis.v5"
-	"github.com/osuthailand/api/common"
+	"github.com/RealistikOsu/api/common"
 )
 
 type setAllowedData struct {

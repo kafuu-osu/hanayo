@@ -12,8 +12,8 @@ import (
 	"github.com/thehowl/go-osuapi"
 	"github.com/valyala/fasthttp"
 	"gopkg.in/redis.v5"
-	"github.com/osuthailand/ocl"
-	"github.com/osuthailand/api/common"
+	"github.com/RealistikOsu/ocl"
+	"github.com/RealistikOsu/api/common"
 )
 
 // R is a redis client.

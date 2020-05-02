@@ -8,8 +8,8 @@ import (
 	"unicode"
 
 	"github.com/jmoiron/sqlx"
-	"github.com/osuthailand/ocl"
-	"github.com/osuthailand/api/common"
+	"github.com/RealistikOsu/ocl"
+	"github.com/RealistikOsu/api/common"
 )
 
 type userData struct {
