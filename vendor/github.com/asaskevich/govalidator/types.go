@@ -388,6 +388,7 @@ var ISO3166List = []ISO3166Entry{
 	{"Samoa", "Samoa (le)", "WS", "WSM", "882"},
 	{"Yemen", "Yémen (le)", "YE", "YEM", "887"},
 	{"Zambia", "Zambie (la)", "ZM", "ZMB", "894"},
+	{"Union of Soviet Socialist Republics (the)", "USSR (the)", "SU", "SUN", "895"},
 }
 
 // ISO4217List is the list of ISO currency codes
