@@ -422,7 +422,7 @@ body.ds .white.background {
 .user.avatar {
 	float: left;
 	overflow: auto;
-	padding-right: 10px;
+	margin-right: 10px;
 	display: block;
 	height: 80px;
 }

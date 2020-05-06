@@ -44,7 +44,13 @@
 						{{ if eq $global.UserID $global.Context.User.ID }}
 							<a href="/settings/avatar">
 						{{ end }}
-								<img src="{{ config "AvatarURL" }}/{{ .id }}" alt="avatar" class="user avatar">
+								{{ with bgetv1 "isOnline?id=%.0f" .id }}
+									{{ if .result }}
+										<img src="{{ config "AvatarURL" }}/{{ $global.UserID }}" alt="avatar" class="user avatar" style="border-radius: 50%; box-shadow: 0px 0px 15px #81ff55;">
+									{{ else }}
+										<img src="{{ config "AvatarURL" }}/{{ $global.UserID }}" alt="avatar" class="user avatar" style="border-radius: 50%; box-shadow: 0px 0px 15px #eb4034;">
+									{{ end }}
+								{{ end }}
 						{{ if eq $global.UserID $global.Context.User.ID }}
 							</a>
 						{{ end }}
@@ -145,7 +151,7 @@ starteffect()
 						{{ end }}
 						{{ with bgetv1 "isOnline?id=%.0f" .id }}
 							<div class="subtitle">
-								<i class="{{ if .result }}green{{ else }}grey{{ end }} circle icon"></i>
+								<i class="{{ if .result }}green{{ else }}red{{ end }} circle icon"></i>
 								{{ if .result }}{{ $global.T "Online" }}{{ else }}{{ $global.T "Offline" }}{{ end }}
 							</div>
 						{{ end }}
@@ -228,7 +234,7 @@ starteffect()
 							<br>{{ $global.T "Last seen: %s." (time $user.latest_activity) | html }}
 							<br>{{ with playstyle .play_style $global }}{{ $global.T "They play with %s." . }}{{ end }}
 						</div>
-						<meta name="og:image" content="https://a.ussr.pl/{{$user.id}}"/>
+							<meta name="og:image" content="https://a.ussr.pl/{{$user.id}}"/>
  							<meta property="og:type" content="website" />
 							<meta property="og:url" content="https://ussr.pl/u/{{$user.id}}" />
 							<meta property="og:title" content={{ $global.T "<b>%s</b>" .username}} />

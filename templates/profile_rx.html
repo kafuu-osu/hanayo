@@ -44,7 +44,13 @@
 						{{ if eq $global.UserID $global.Context.User.ID }}
 							<a href="/settings/avatar">
 						{{ end }}
-								<img src="{{ config "AvatarURL" }}/{{ .id }}" alt="avatar" class="user avatar">
+						{{ with bgetv1 "isOnline?id=%.0f" .id }}
+						{{ if .result }}
+							<img src="{{ config "AvatarURL" }}/{{ $global.UserID }}" alt="avatar" class="user avatar" style="border-radius: 50%; box-shadow: 0px 0px 15px #81ff55;">
+						{{ else }}
+							<img src="{{ config "AvatarURL" }}/{{ $global.UserID }}" alt="avatar" class="user avatar" style="border-radius: 50%; box-shadow: 0px 0px 15px #eb4034;">
+						{{ end }}
+					{{ end }}
 						{{ if eq $global.UserID $global.Context.User.ID }}
 							</a>
 						{{ end }}
