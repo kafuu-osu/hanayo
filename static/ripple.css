@@ -25,7 +25,7 @@
 
 }
 .main-block {
-    border-radius: 4px;
+    border-radius: 0px;
     display: flex !important;
     justify-content: center;
     background-color: #222;
@@ -70,7 +70,7 @@
     box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
     margin: 1rem 0em;
     padding: 1em 1em;
-    border-radius: 0.28571429rem;
+    border-radius: 0rem;
     border: 1px solid rgba(34, 36, 38, 0.15);
     color: white;
 }
@@ -865,4 +865,18 @@ body {
 .status-icon {
     font-size: 4em!important;
     padding-top: 30px;
+}
+
+/*Rel was her*/
+
+.ui[class*="top attached"].segment {
+    border-radius: 0;
+}
+
+.ui[class*="bottom attached"].menu {
+    border-radius: 0;
+}
+
+.ui.segments:not(.horizontal)>.segment:first-child {
+    border-radius: 0;
 }
