@@ -151,7 +151,7 @@ starteffect()
 						{{ end }}
 						{{ with bgetv1 "isOnline?id=%.0f" .id }}
 							<div class="subtitle">
-								<i class="{{ if .result }}green{{ else }}grey{{ end }} circle icon"></i>
+								<i class="{{ if .result }}green{{ else }}red{{ end }} circle icon"></i>
 								{{ if .result }}{{ $global.T "Online" }}{{ else }}{{ $global.T "Offline" }}{{ end }}
 							</div>
 						{{ end }}
@@ -185,7 +185,7 @@ starteffect()
 				</div>
 			</div>
 			{{ $user := . }}
-			<div class="ui three item bottom attached menu" id="rx-menu">
+			<div class="ui three item bottom attached menu" id="rx-menu" style="margin-bottom: 0;">
 					<a class="0 item" data-rx="0" href="/u/{{ $user.id }}">Regular</a>
 					<a class="1 item" data-rx="1" href="/rx/u/{{ $user.id }}">Relax</a>
 					<a class="1 item" data-rx="2" href="/ap/u/{{ $user.id }}">Autopilot</a>
