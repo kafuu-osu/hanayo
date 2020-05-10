@@ -1,3 +1,15 @@
+/*
+  _____            _ _     _   _ _     ____            _ 
+ |  __ \          | (_)   | | (_) |   / __ \          | |
+ | |__) |___  __ _| |_ ___| |_ _| | _| |  | |___ _   _| |
+ |  _  // _ \/ _` | | / __| __| | |/ / |  | / __| | | | |
+ | | \ \  __/ (_| | | \__ \ |_| |   <| |__| \__ \ |_| |_|
+ |_|  \_\___|\__,_|_|_|___/\__|_|_|\_\\____/|___/\__,_(_)
+
+ The custom CSS for RealistikOsu!
+
+*/
+
 .ripple.logo {
 	padding-top: 4px;
 }
@@ -878,5 +890,49 @@ body {
 }
 
 .ui.segments:not(.horizontal)>.segment:first-child {
+    border-radius: 0;
+}
+
+.ui.menu {
+    border-radius: 0;
+}
+
+.ui.table {
+    border-radius: 0;
+}
+
+.ui.menu>.item:first-child {
+    border-radius: 0;
+}
+
+.ui.table thead tr:first-child>th:only-child {
+    border-radius: 0;
+}
+
+.ui.table thead tr:first-child>th:first-child {
+    border-radius: 0;
+}
+
+.ui.table thead tr:first-child>th:last-child {
+    border-radius: 0;
+}
+
+.ui.bottom.attached.menu>.item:first-child {
+    border-radius: 0;
+}
+
+.ui.table tfoot tr:first-child>th:only-child {
+    border-radius: 0;
+}
+
+.ui.progress {
+    border-radius: 0;
+}
+
+.ui.active.progress .bar::after {
+    border-radius: 0;
+}
+
+.ui.progress .bar {
     border-radius: 0;
 }
