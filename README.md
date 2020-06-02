@@ -10,7 +10,7 @@ Some design elements have been taken from osuAkatsuki.
 
 ![Website Screenshot](http://im.ussr.online/5e373b25999d90.14380332-aone.png)
 
-## (RealistikOsu! Note) To fellow developers: this is not how you do it!
+## (Ripple Note) To fellow developers: this is not how you do it!
 
 The biggest flaw of hanayo are that when I set out to create it, I wanted to create a template system that:
 
