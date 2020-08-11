@@ -1,5 +1,7 @@
 # Hanayo - RealistikOsu!'s frontend
 
+NOTE: The GoLang backed code is broken... We will fix it *soon*...
+
 This the the [frontend](https://ussr.pl/) of RealistikOsu!.
 
 It is based on Ainu's version of [hanayo](https://github.com/osuripple/hanayo).
@@ -8,7 +10,7 @@ Some design elements have been taken from osuAkatsuki.
 
 ![Website Screenshot](http://im.ussr.online/5e373b25999d90.14380332-aone.png)
 
-## (RealistikOsu! Note) To fellow developers: this is not how you do it!
+## (Ripple Note) To fellow developers: this is not how you do it!
 
 The biggest flaw of hanayo are that when I set out to create it, I wanted to create a template system that:
 

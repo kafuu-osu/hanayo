@@ -122,9 +122,9 @@ msgid "{{ stars }} star"
 msgid_plural "{{ stars }} stars"
 msgstr[0] "{{ stars }} sao"
 
-msgid "<b>{{ months }}</b> month costs <b>€ {{ eur }}</b>"
-msgid_plural "<b>{{ months }}</b> months cost <b>€ {{ eur }}</b>"
-msgstr[0] "<b>{{ months }}</b> tháng là <b>€ {{ eur }}</b>"
+msgid "<b>{{ months }}</b> month costs <b>£{{ eur }}</b>"
+msgid_plural "<b>{{ months }}</b> months cost <b>£{{ eur }}</b>"
+msgstr[0] "<b>{{ months }}</b> tháng là <b>£{{ eur }}</b>"
 
 msgid "($ {{ usd }} / BTC {{ btc }})"
 msgstr "($ {{ usd }} / BTC {{ btc }})"
