@@ -1,5 +1,10 @@
 # Hanayo - kafuu-osu!'s frontend
 
+```
+go mod init
+go build
+```
+
 NOTE: The GoLang backed code is broken... We will fix it *soon*...
 
 This the the [frontend](https://ussr.pl/) of kafuu-osu!.
