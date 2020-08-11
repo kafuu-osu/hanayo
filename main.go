@@ -17,18 +17,18 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
 	"github.com/johnniedoe/contrib/gzip"
+	"github.com/kafuu-osu/hanayo/modules/btcaddress"
+	"github.com/kafuu-osu/hanayo/modules/btcconversions"
+	"github.com/kafuu-osu/hanayo/routers/oauth"
+	"github.com/kafuu-osu/hanayo/routers/pagemappings"
+	"github.com/kafuu-osu/hanayo/services"
+	"github.com/kafuu-osu/hanayo/services/cieca"
 	"github.com/thehowl/conf"
 	"github.com/thehowl/qsql"
 	"gopkg.in/mailgun/mailgun-go.v1"
 	"gopkg.in/redis.v5"
 	"zxq.co/ripple/agplwarning"
-	"github.com/RealistikOsu/hanayo/modules/btcaddress"
-	"github.com/RealistikOsu/hanayo/modules/btcconversions"
-	"github.com/RealistikOsu/hanayo/routers/oauth"
-	"github.com/RealistikOsu/hanayo/routers/pagemappings"
-	"github.com/RealistikOsu/hanayo/services"
-	"github.com/RealistikOsu/hanayo/services/cieca"
-	"zxq.co/ripple/schiavolib"
+	schiavo "zxq.co/ripple/schiavolib"
 	"zxq.co/x/rs"
 )
 
@@ -99,7 +99,7 @@ var (
 )
 
 func main() {
-	err := agplwarning.Warn("RealistikOsu!", "Hanayo")
+	err := agplwarning.Warn("kafuu-osu!", "Hanayo")
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -130,7 +130,7 @@ func main() {
 		&config.IP_API:           "https://ip.zxq.co",
 		&config.DiscordServer:    "https://discord.gg/87E2K46",
 		&config.MainRippleFolder: "/home/RIPPLE/",
-		&config.MailgunFrom:      `"Ainu" <noreply@ripple.moe>`,
+		&config.MailgunFrom:      `"kafuu" <noreply@ripple.moe>`,
 	}
 	for key, value := range configDefaults {
 		if *key == "" {
@@ -226,9 +226,7 @@ func httpLoop() {
 	for {
 		e := generateEngine()
 		fmt.Println("Listening on", config.ListenTo)
-		if !startuato(e) {
-			break
-		}
+		startuato(e)
 	}
 }
 
@@ -283,7 +281,7 @@ func generateEngine() *gin.Engine {
 	r.POST("/register", registerSubmit)
 	r.GET("/register/verify", verifyAccount)
 	r.GET("/register/welcome", welcome)
-	
+
 	r.GET("/clans/create", ccreate)
 	r.POST("/clans/create", ccreateSubmit)
 
@@ -315,7 +313,7 @@ func generateEngine() *gin.Engine {
 	r.POST("/settings/2fa/totp", totpSetup)
 	r.GET("/settings/discord/finish", discordFinish)
 	r.POST("/settings/profbackground/:type", profBackground)
-	
+
 	r.POST("/settings/clansettings", createInvite)
 	r.POST("settings/clansettings/k", clanKick)
 	r.GET("/clans/invite/:inv", clanInvite)
@@ -350,5 +348,5 @@ func generateEngine() *gin.Engine {
 }
 
 const alwaysRespondText = `Ooops! Looks like something went really wrong while trying to process your request.
-Perhaps report this to a Ainu developer?
+Perhaps report this to a kafuu developer?
 Retrying doing again what you were trying to do might work, too.`

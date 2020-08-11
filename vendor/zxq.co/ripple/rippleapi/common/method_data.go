@@ -90,7 +90,7 @@ func _err(err error, tags map[string]string, user *raven.User, c *fasthttp.Reque
 	}
 
 	// Create stacktrace
-	st := raven.NewStacktrace(0, 3, []string{"github.com/RealistikOsu", "git.github.com/RealistikOsu"})
+	st := raven.NewStacktrace(0, 3, []string{"github.com/kafuu-osu", "git.github.com/kafuu-osu"})
 
 	ifaces := []raven.Interface{st, generateRavenHTTP(c)}
 	if user != nil {

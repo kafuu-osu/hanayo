@@ -3,7 +3,7 @@ package websockets
 import (
 	"encoding/json"
 
-	"github.com/RealistikOsu/api/common"
+	"github.com/kafuu-osu/KafuuAPI/common"
 )
 
 // SetRestrictedVisibility sets whether the information of restricted users

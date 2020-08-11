@@ -9,8 +9,8 @@ import (
 
 	redis "gopkg.in/redis.v5"
 
-	"github.com/RealistikOsu/ocl"
-	"github.com/RealistikOsu/api/common"
+	"github.com/kafuu-osu/ocl"
+	"github.com/kafuu-osu/KafuuAPI/common"
 )
 
 type leaderboardUser struct {

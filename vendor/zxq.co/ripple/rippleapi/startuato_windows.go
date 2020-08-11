@@ -1,6 +1,6 @@
 // +build windows
 
-// The RealistikOsu! API on Windows is not officially supported and you're probably
+// The kafuu-osu! API on Windows is not officially supported and you're probably
 // gonna swear a lot if you intend to use it on Windows. Caveat emptor.
 
 package main
@@ -10,7 +10,7 @@ import (
 	"net"
 
 	"github.com/valyala/fasthttp"
-	"github.com/RealistikOsu/api/common"
+	"github.com/kafuu-osu/KafuuAPI/common"
 )
 
 func startuato(hn fasthttp.RequestHandler) {

@@ -1,10 +1,10 @@
-# Hanayo - RealistikOsu!'s frontend
+# Hanayo - kafuu-osu!'s frontend
 
 NOTE: The GoLang backed code is broken... We will fix it *soon*...
 
-This the the [frontend](https://ussr.pl/) of RealistikOsu!.
+This the the [frontend](https://ussr.pl/) of kafuu-osu!.
 
-It is based on Ainu's version of [hanayo](https://github.com/osuripple/hanayo).
+It is based on kafuu's version of [hanayo](https://github.com/osuripple/hanayo).
 
 Some design elements have been taken from osuAkatsuki.
 
@@ -15,7 +15,7 @@ Some design elements have been taken from osuAkatsuki.
 The biggest flaw of hanayo are that when I set out to create it, I wanted to create a template system that:
 
 * Created a handler by simply having the file "be there"
-* Could fetch the data it needed on its own, often from the RealistikOsu! API
+* Could fetch the data it needed on its own, often from the kafuu-osu! API
 * Had the actual Go code be as little as possible
 
 This was not immediately evident to me, a Go beginner, but what I did there was basically make Go be PHP.

@@ -210,27 +210,27 @@ starteffect()
 				{{ $member := (has .privileges 3) }}
 					
 					{{ if $owner }}
-					{{ $global.T "RealistikOsu! %s" "Owner" }}
+					{{ $global.T "kafuu-osu! %s" "Owner" }}
 					{{ else }}
 					{{ if $cm }}
-					{{ $global.T "RealistikOsu! %s" "Community Manager" }}
+					{{ $global.T "kafuu-osu! %s" "Community Manager" }}
 					{{ else }}
 					{{ if $admin }}
-					{{ $global.T "RealistikOsu! %s" "Admin" }}
+					{{ $global.T "kafuu-osu! %s" "Admin" }}
 					{{ else }}
 					{{ if $dev }}
-					{{ $global.T "RealistikOsu! %s" "Developer" }}
+					{{ $global.T "kafuu-osu! %s" "Developer" }}
 					{{ else }}
 					{{ if $bat }}
-					{{ $global.T "RealistikOsu! %s" "BAT" }}
+					{{ $global.T "kafuu-osu! %s" "BAT" }}
 					{{ else }}
 					{{ if $member }}
-					{{ $global.T "RealistikOsu! %s" "Player" }}
+					{{ $global.T "kafuu-osu! %s" "Player" }}
 					{{ else }}
 					{{end}}{{end}}{{end}}{{end}}{{end}}{{end}}
 
 							{{ $global.T "from <b>%s</b>." (country .country true) | html }}
-							<br>{{ $global.T "They signed up on RealistikOsu! %s." (time $user.registered_on) | html }}
+							<br>{{ $global.T "They signed up on kafuu-osu! %s." (time $user.registered_on) | html }}
 							<br>{{ $global.T "Last seen: %s." (time $user.latest_activity) | html }}
 							<br>{{ with playstyle .play_style $global }}{{ $global.T "They play with %s." . }}{{ end }}
 						</div>
@@ -238,7 +238,7 @@ starteffect()
  							<meta property="og:type" content="website" />
 							<meta property="og:url" content="https://ussr.pl/u/{{$user.id}}" />
 							<meta property="og:title" content={{ $global.T "<b>%s</b>" .username}} />
-							<meta property="og:description" content={{ $global.T "<b>%s</b> is a RealistikOsu! player from <b>%s</b>." .username (country .country true)}} />
+							<meta property="og:description" content={{ $global.T "<b>%s</b> is a kafuu-osu! player from <b>%s</b>." .username (country .country true)}} />
 							<meta property="og:image" content="https://a.ussr.pl/{{$user.id}}" />
 							
 						<div class="column">

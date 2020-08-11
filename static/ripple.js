@@ -433,7 +433,7 @@ $(document)
       $(".twemoji").each(function(k, v) { twemoji.parse(v); });
     }
 
-    // RealistikOsu! stuff
+    // kafuu-osu! stuff
     var f = singlePageSnippets[window.location.pathname];
     if (typeof f === 'function')
       f();
@@ -538,7 +538,7 @@ function _api(base, endpoint, data, success, failure, post, handleAllFailures) {
   handleAllFailures = (typeof handleAllFailures !== undefined) ? handleAllFailures : false;
 
   var errorMessage =
-      "An error occurred while contacting the RealistikOsu! API. Please report this to a RealistikOsu! developer.";
+      "An error occurred while contacting the kafuu-osu! API. Please report this to a kafuu-osu! developer.";
 
   $.ajax({
     method : (post ? "POST" : "GET"),
@@ -750,7 +750,7 @@ function query(name, url) {
   return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-// Useful for forms contacting the RealistikOsu! API
+// Useful for forms contacting the kafuu-osu! API
 function formToObject(form) {
   var inputs = form.find("input, textarea, select");
   var obj = {};

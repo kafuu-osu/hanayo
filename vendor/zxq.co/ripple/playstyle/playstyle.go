@@ -3,7 +3,7 @@ package playstyle
 
 import "strings"
 
-// PlayStyle is a bitwise enum containing the instruments a RealistikOsu! user likes
+// PlayStyle is a bitwise enum containing the instruments a kafuu-osu! user likes
 // to play with.
 type PlayStyle int
 

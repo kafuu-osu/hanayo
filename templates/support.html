@@ -1,6 +1,6 @@
 {{/*###
 Handler=/donate
-TitleBar=Support RealistikOsu!
+TitleBar=Support kafuu-osu!
 KyutGrill=donate2.png
 AdditionalJS=https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/9.0.0/nouislider.min.js
 */}}
@@ -116,7 +116,7 @@ AdditionalJS=https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/9.0.0/nouislider.
 								<input type="hidden" name="option_select{{ . }}" value="{{ $months }} month{{ if . }}s{{ end }}">
 								<input type="hidden" name="option_amount{{ . }}" value="{{ calculateDonorPrice $months }}">
 							{{ end }}
-							<input type="hidden" name="on1" value="RealistikOsu! user to give donor">
+							<input type="hidden" name="on1" value="kafuu-osu! user to give donor">
 							<input type="hidden" name="custom" value="username={{ $global.User.Username }}" id="ipn-username">
 							<input type="hidden" name="amount" value="{{ calculateDonorPrice 1 }}" id="paypal-amt">
 							<div class="ui fluid labeled action input">
@@ -128,7 +128,7 @@ AdditionalJS=https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/9.0.0/nouislider.
 							</div>
 							{{ $ief }}
 							<input type="hidden"
-							name="business" value="realistikosu@gmail.com">
+							name="business" value="kafuu-osu@gmail.com">
 							<input type="hidden" name="cmd" value="_xclick">
 							<input type="hidden" name="lc" value="GB">
 							<input type="hidden" name="no_note" value="0">
@@ -139,7 +139,7 @@ AdditionalJS=https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/9.0.0/nouislider.
 				<h4 class="ui horizontal divider header">
 					{{ $.T "I've donated, now what?" }}
 				</h4>
-				{{ $.T "You'll have to wait until we verify and process your payment. It can take up to <b>12 hours</b>. If 12 hours have passed and you still haven't received your Donor tag, contact a <b>Dev/Community Manager</b> in our Discord server or send an email to <b><a href=\"mailto:realistikosu@gmail.com\">realistikosu@gmail.com</a></b>. Once we have processed your payment, you'll receive an <b>email</b> to the address you've used to sign up and you'll get <b>all the donor privileges, except the Discord ones</b>. To receive the Discord donor privileges, go to the Discord and DM any of the staff team above (and including) the support team." | html }}
+				{{ $.T "You'll have to wait until we verify and process your payment. It can take up to <b>12 hours</b>. If 12 hours have passed and you still haven't received your Donor tag, contact a <b>Dev/Community Manager</b> in our Discord server or send an email to <b><a href=\"mailto:kafuu-osu@gmail.com\">kafuu-osu@gmail.com</a></b>. Once we have processed your payment, you'll receive an <b>email</b> to the address you've used to sign up and you'll get <b>all the donor privileges, except the Discord ones</b>. To receive the Discord donor privileges, go to the Discord and DM any of the staff team above (and including) the support team." | html }}
 			{{ else }}
 				<div class="ui divider"></div>
 				<h1 class="ui center aligned header">{{ $.T "Please log in to get supporter" }}</h1>

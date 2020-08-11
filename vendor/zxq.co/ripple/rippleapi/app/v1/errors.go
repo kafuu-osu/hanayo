@@ -3,12 +3,12 @@ package v1
 import (
 	"strings"
 
-	"github.com/RealistikOsu/api/common"
+	"github.com/kafuu-osu/KafuuAPI/common"
 )
 
 // Boilerplate errors
 var (
-	Err500     = common.SimpleResponse(500, "An error occurred. Trying again may work. If it doesn't, yell at this RealistikOsu! instance admin and tell them to fix the API.")
+	Err500     = common.SimpleResponse(500, "An error occurred. Trying again may work. If it doesn't, yell at this kafuu-osu! instance admin and tell them to fix the API.")
 	ErrBadJSON = common.SimpleResponse(400, "Your JSON for this request is invalid.")
 )
 

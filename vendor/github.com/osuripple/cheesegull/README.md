@@ -11,7 +11,7 @@ for running a sort of "beatmap mirror" for Ripple's osu! direct. We originally
 used an actual osu! beatmap mirror which had all of the beatmaps on osu!
 downloaded, but it ended up taking wayyyy too much space, and the cheapest
 server we could find that had at least 2 TB of HDD had an upload speed of
-30mbit - as you can guess, this meant that for the RealistikOsu! users who didn't have
+30mbit - as you can guess, this meant that for the kafuu-osu! users who didn't have
 a third world connection the download speed was pretty poor.
 
 CheeseGull tries to hold a replica of the osu! database as updated as possible.
@@ -74,4 +74,4 @@ these basic two requirements.)
 ## License
 
 Seeing as this project is not meant exclusively for usage by Ripple, the license,
-unlike most other RealistikOsu! projects, is [MIT](LICENSE).
+unlike most other kafuu-osu! projects, is [MIT](LICENSE).

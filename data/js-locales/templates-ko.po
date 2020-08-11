@@ -16,8 +16,8 @@ msgstr ""
 
 # JavaScript
 msgid ""
-"An error occurred while contacting the RealistikOsu! API. Please report this to a "
-"RealistikOsu! developer."
+"An error occurred while contacting the kafuu-osu! API. Please report this to a "
+"kafuu-osu! developer."
 msgstr "리플 API에 문제가 발생했습니다. 서버 관리자에게 연락하세요."
 
 # This is a quote of UNDERTALE if you didn't know.

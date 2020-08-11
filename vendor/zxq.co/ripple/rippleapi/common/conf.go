@@ -10,7 +10,7 @@ import (
 // automatically set using -ldflags during build time.
 var Version string
 
-// Conf is the configuration file data for the RealistikOsu! API.
+// Conf is the configuration file data for the kafuu-osu! API.
 // Conf uses https://github.com/thehowl/conf
 type Conf struct {
 	DatabaseType           string `description:"At the moment, 'mysql' is the only supported database type."`
@@ -40,7 +40,7 @@ func Load() (c Conf, halt bool) {
 	if halt {
 		conf.MustExport(Conf{
 			DatabaseType:           "mysql",
-			DSN:                    "root@/RealistikOsu!",
+			DSN:                    "root@/kafuu-osu!",
 			ListenTo:               ":40001",
 			Unix:                   false,
 			HanayoKey:              "Potato",

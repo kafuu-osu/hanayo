@@ -13,7 +13,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/RealistikOsu/api/common"
+	"github.com/kafuu-osu/KafuuAPI/common"
 )
 
 // MetaRestartGET restarts the API with Zero Downtime™.

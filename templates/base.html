@@ -8,7 +8,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title>{{ if .TitleBar }}{{ .T .TitleBar }} - {{ end }}RealistikOsu!</title>
+		<title>{{ if .TitleBar }}{{ .T .TitleBar }} - {{ end }}kafuu-osu!</title>
 
 		<link rel="stylesheet" type="text/css" href="/static/{{ if $ds }}dark/{{ end }}semantic.min.css?{{ unixNano }}">
 		<link rel="stylesheet" type="text/css" href="/static/ripple.css?{{ unixNano }}">
@@ -80,12 +80,12 @@
 				{{ end }}
 				{{ with $settings.game_maintenance.Int }}
 					<div class="ui warning message">
-						{{ $.T "RealistikOsu!'s score submission is currently in maintenance mode. You will not be allowed to submit scores for the time being." }}
+						{{ $.T "kafuu-osu!'s score submission is currently in maintenance mode. You will not be allowed to submit scores for the time being." }}
 					</div>
 				{{ end }}
 				{{ with $settings.website_maintenance.Int }}
 					<div class="ui warning message">
-						{{ $.T "The RealistikOsu! website is currently in maintenance mode. Only certain users are allowed to access the full website." }}
+						{{ $.T "The kafuu-osu! website is currently in maintenance mode. Only certain users are allowed to access the full website." }}
 					</div>
 				{{ end }}
 				</div>
@@ -124,13 +124,13 @@
 								<a class="footer-title">Source Code</a>
 								<ul style="list-style-type: none; padding: 0; margin: 0;">
 									<li>
-										<i><a href="https://github.com/RealistikOsu" target="_blank">GitHub</a></i>
+										<i><a href="https://github.com/kafuu-osu" target="_blank">GitHub</a></i>
 									</li>
 								</ul>
 							</div>
 						</div>
 						<div class="footer-logo">
-							<span style="color: white; font-size: 30px;">RealistikOsu!</span> 
+							<span style="color: white; font-size: 30px;">kafuu-osu!</span> 
 							<br>
 							<a class="subtitle" style="font-size: 15px; color: white;">osu! private server</a>
 						</div>

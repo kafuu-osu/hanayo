@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"golang.org/x/crypto/bcrypt"
 	"gopkg.in/mailgun/mailgun-go.v1"
-	"github.com/RealistikOsu/api/common"
+	"github.com/kafuu-osu/KafuuAPI/common"
 	"zxq.co/x/rs"
 )
 
@@ -71,7 +71,7 @@ func passwordReset(c *gin.Context) {
 	)
 	msg := mailgun.NewMessage(
 		config.MailgunFrom,
-		T(c, "RealistikOsu! password recovery instructions"),
+		T(c, "kafuu-osu! password recovery instructions"),
 		content,
 		email,
 	)

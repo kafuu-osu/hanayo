@@ -3,7 +3,7 @@ package v1
 import (
 	"database/sql"
 
-	"github.com/RealistikOsu/api/common"
+	"github.com/kafuu-osu/KafuuAPI/common"
 )
 
 type singleBadge struct {
@@ -17,7 +17,7 @@ type multiBadgeData struct {
 	Badges []singleBadge `json:"badges"`
 }
 
-// BadgesGET retrieves all the badges on this RealistikOsu! instance.
+// BadgesGET retrieves all the badges on this kafuu-osu! instance.
 func BadgesGET(md common.MethodData) common.CodeMessager {
 	var (
 		r    multiBadgeData

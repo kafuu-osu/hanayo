@@ -16,8 +16,8 @@ msgstr ""
 
 # JavaScript
 msgid ""
-"An error occurred while contacting the RealistikOsu! API. Please report this to a "
-"RealistikOsu! developer."
+"An error occurred while contacting the kafuu-osu! API. Please report this to a "
+"kafuu-osu! developer."
 msgstr ""
 "Nastąpił błąd podczas kontaktowania API. Proszę powiadomić o tym deweloperów "
 "Ripple."

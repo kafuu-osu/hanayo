@@ -3,8 +3,8 @@ package v1
 import (
 	"strings"
 
-	"github.com/RealistikOsu/api/common"
-	"github.com/RealistikOsu/semantic-icons-ugc"
+	"github.com/kafuu-osu/KafuuAPI/common"
+	"github.com/kafuu-osu/semantic-icons-ugc"
 )
 
 type donorInfoResponse struct {

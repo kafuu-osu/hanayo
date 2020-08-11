@@ -1,4 +1,4 @@
-// Package v1 implements the first version of the RealistikOsu! API.
+// Package v1 implements the first version of the kafuu-osu! API.
 package v1
 
 import (
@@ -8,8 +8,8 @@ import (
 	"unicode"
 
 	"github.com/jmoiron/sqlx"
-	"github.com/RealistikOsu/ocl"
-	"github.com/RealistikOsu/api/common"
+	"github.com/kafuu-osu/ocl"
+	"github.com/kafuu-osu/KafuuAPI/common"
 )
 
 type userData struct {

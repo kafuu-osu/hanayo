@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/RealistikOsu/api/common"
+	"github.com/kafuu-osu/KafuuAPI/common"
 )
 
 // This basically proxies requests from Medium's API and is used on Ripple's
@@ -86,7 +86,7 @@ func init() {
 	gob.Register([]blogPost{})
 }
 
-// BlogPostsGET retrieves the latest blog posts on the RealistikOsu! blog.
+// BlogPostsGET retrieves the latest blog posts on the kafuu-osu! blog.
 func BlogPostsGET(md common.MethodData) common.CodeMessager {
 	// check if posts are cached in redis
 	res := md.R.Get("api:blog_posts").Val()

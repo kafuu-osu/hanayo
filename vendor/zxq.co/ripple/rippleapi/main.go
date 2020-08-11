@@ -6,11 +6,11 @@ import (
 	"strings"
 	"syscall"
 
+	"github.com/kafuu-osu/KafuuAPI/app"
+	"github.com/kafuu-osu/KafuuAPI/beatmapget"
+	"github.com/kafuu-osu/KafuuAPI/common"
 	"zxq.co/ripple/agplwarning"
-	"github.com/RealistikOsu/api/app"
-	"github.com/RealistikOsu/api/beatmapget"
-	"github.com/RealistikOsu/api/common"
-	"zxq.co/ripple/schiavolib"
+
 	// Golint pls dont break balls
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
@@ -31,12 +31,12 @@ func init() {
 var db *sqlx.DB
 
 func main() {
-	err := agplwarning.Warn("RealistikOsu!", "RealistikOsu! API")
+	err := agplwarning.Warn("kafuu-osu!", "kafuu-osu! API")
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	fmt.Print("RealistikOsu! API")
+	fmt.Print("kafuu-osu! API")
 	if Version != "" {
 		fmt.Print("; git commit hash: ", Version)
 	}
@@ -47,7 +47,7 @@ func main() {
 		return
 	}
 
-	schiavo.Prefix = "RealistikOsu! API"
+	schiavo.Prefix = "kafuu-osu! API"
 
 	if !strings.Contains(conf.DSN, "parseTime=true") {
 		c := "?"
