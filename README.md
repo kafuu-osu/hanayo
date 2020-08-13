@@ -2,7 +2,7 @@
 
 NOTE: The GoLang backed code is broken... We will fix it *soon*...
 
-This the the [frontend](https://ussr.pl/) of kafuu-osu!.
+This the the [frontend](https://old.kafuu.pro/) of kafuu-osu!.
 
 It is based on kafuu's version of [hanayo](https://github.com/osuripple/hanayo).
 

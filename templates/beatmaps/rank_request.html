@@ -9,15 +9,15 @@ MinPrivileges=2
 <div class="ui container">
 	<div class="ui raised segment center aligned">
 		{{ $f := ieForm .Gin }}
-		<h4>{{ .T "Want to play an unranked beatmap and get pp? You can submit beatmaps rank requests here!" }}</h4>
+		<h4>{{ .T "想rank图？把链接丢这！" }}</h4>
 		{{ with .Get "beatmaps/rank_requests/status" }}
 			<h4 class="ui horizontal divider header">
 				<i class="wait icon"></i>
-				{{ $.T "Queue status" }}
+				{{ $.T "队列状态" }}
 			</h4>
 			<h2 style="display: inline; font-weight: normal;"><span id="queue-info">{{ .submitted }}/{{ .queue_size }}</span> <i{{ if not .submitted_by_user }} hidden{{ end }} id="by-you">(<span id="submitted-by-user">{{ .submitted_by_user }}</span>/<span id="max-per-user">{{ .max_per_user }}</span> {{ $.T "by you" }})</i></h2><br>
-			<h3 style="display: inline; font-weight: normal;">{{ $.T "Requests submitted" }}</h3><br>
-			<h4 style="display: inline; font-weight: normal;">{{ $.T "In the past 24 hours" }}</h4><br>
+			<h3 style="display: inline; font-weight: normal;">{{ $.T "有几个图被提交了？" }}</h3><br>
+			<h4 style="display: inline; font-weight: normal;">{{ $.T "在过去的24小时里" }}</h4><br>
 			{{ $perc := perc .submitted .queue_size }}
 			<div class="ui container" style="width: 50%; margin-top: 8px; margin-bottom: 8px;">
 				<div class="ui red progress" data-percent="{{ $perc }}" id="progressbar">
@@ -28,7 +28,7 @@ MinPrivileges=2
 			</div>
 			<h4 class="ui horizontal divider header">
 				<i class="music icon"></i>
-				{{ $.T "Request a beatmap" }}
+				{{ $.T "提交一个图" }}
 			</h4>
 			{{ if .can_submit }}
 				<form class="ui form" id="b-form">
@@ -37,13 +37,13 @@ MinPrivileges=2
 						{{ $f }}
 						<button tabindex="2" class="ui right labeled icon red button">
 							<i class="right arrow icon"></i>
-							{{ $.T "Submit" }}
+							{{ $.T "提交" }}
 						</button>
 					</div>
 				</form>
 			{{ else }}
-				<h3 class="ui header">{{ $.T "You cannot currently request beatmaps!" }}</h3>
-				{{ with .next_expiration }}<p>{{ $.T "Please try again " }}<b>{{ timeAddDay . }}</b></p>{{ end }}
+				<h3 class="ui header">{{ $.T "你现在不能搞这事" }}</h3>
+				{{ with .next_expiration }}<p>{{ $.T "你再试试？ " }}<b>{{ timeAddDay . }}</b></p>{{ end }}
 			{{ end }}
 		{{ end }}
 	</div>

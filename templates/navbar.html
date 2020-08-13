@@ -7,7 +7,7 @@
 <div class="ui secondary fixed-height stackable white background main menu no margin bottom{{ if .DisableHH }} dropped{{ end }}" id="navbar">
 	<div class="ui container">
 		<div class="item">
-			<b><a href="/" title="{{ .T "Home page" }}"><img class="ripple logo" src="/static/logos/text-{{ if $ds }}white{{ else }}black{{ end }}.png" alt="kafuu-osu!"></a></b>
+			<b><a href="/" title="{{ .T "主页" }}"><img class="ripple logo" src="/static/logos/logo{{ if $ds }}{{ else }}{{ end }}.png" alt="kafuu-osu!"></a></b>
 		</div>
 		{{ if $isRAP }}
 			{{/*
@@ -17,46 +17,43 @@
 				the current RAP's sidebar.
 			*/}}
 		{{ else }}
-			{{ navbarItem .Path (.T "Leaderboard") "/leaderboard" }}
+			{{ navbarItem .Path (.T "呃排行榜？") "/leaderboard" }}
 			<div class="ui dropdown item">
-				<span>{{ .T "Clans" }}</span>
+				<span>{{ .T "LPL战队" }}</span>
 				<div class="menu">
-					{{ navbarItem .Path (.T "Clan Leaderboard") "/clans?mode=0" }}
+					{{ navbarItem .Path (.T "战队排行榜") "/clans?mode=0" }}
 					{{ if not ($isClan) }}
-					{{ navbarItem .Path (.T "Create Clan") "/clans/create" }}
+					{{ navbarItem .Path (.T "我要当战队老板") "/clans/create" }}
 					{{ end }}
 					{{ if ($isClanO) }}
-					{{ navbarItem .Path (.T "Clan Settings") "/settings/clansettings" }}
+					{{ navbarItem .Path (.T "战队设定") "/settings/clansettings" }}
 					{{ end }}
 				</div>
 			</div>
 			<div class="ui dropdown item">
-				<span>{{ .T "Help" }}</span>
+				<span>{{ .T "救命！" }}</span>
 				<div class="menu">
-					{{ navbarItem .Path (.T "About") "/about" }}
-					{{ navbarItem .Path (.T "Rules") "/doc/rules" }}
-					{{ navbarItem .Path (.T "Documentation") "/doc" }}
-					{{ navbarItem .Path (.T "Server switcher") "http://dl.ussr.pl/files/osu/ROS.exe" }}
-					{{ navbarItem .Path (.T "Our Team") "/team" }}
+					{{ navbarItem .Path (.T "关于（说明）") "/about" }}
+					{{ navbarItem .Path (.T "规则") "/doc/rules" }}
+					{{ navbarItem .Path (.T "文档") "/doc" }}
+					{{ navbarItem .Path (.T "团队！") "/team" }}
 				</div>
 			</div>
-			{{ if .Context.User.Username }}
 			<div class="ui dropdown item">
-				<span>{{ .T "Beatmaps" }}</span>
+				<span>{{ .T "Beatmaps / 地图" }}</span>
 				<div class="menu">
-					{{ navbarItem .Path (.T "Request beatmap ranking") "/beatmaps/rank_request" }}
-					{{ navbarItem .Path (.T "Beatmaps Listing") "/beatmaps" }}		
+					{{ navbarItem .Path (.T "我有点想rank几张图") "/beatmaps/rank_request" }}
+					{{ navbarItem .Path (.T "我看看地图列表") "/beatmaps" }}		
 				</div>
 			</div>
-			{{ end }}
 			{{/* navbarItem .Path (.T "Donate" | printf "<i class=\"red heart icon\"></i>%s") "/donate" */}}
-			{{ if $isAdmin }}{{ navbarItem .Path (.T "Admin Panel" | printf "<b>%s</b>") "https://old.ussr.pl" }}{{ end }}
+			{{ if $isAdmin }}{{ navbarItem .Path (.T "Admin Panel" | printf "<b>%s</b>") "https://admin.kafuu.pro" }}{{ end }}
 		{{ end }}
 		<div class="firetrucking-right-menu">
 			<div class="item">
 				<div class="ui search" id="user-search">
 					<div class="ui icon input">
-						<input class="prompt" type="text" placeholder="{{ .T "Looking for someone?" }}" id="user-search-input">
+						<input class="prompt" type="text" placeholder="{{ .T "你找谁？" }}" id="user-search-input">
 						<i class="search link icon"></i>
 					</div>
 				</div>
@@ -66,15 +63,15 @@
 					<img id="avatar" class="ui avatar image" src="{{ config "AvatarURL" }}/{{ .Context.User.ID }}">
 					<span>{{ .Context.User.Username }}</span>
 					<div class="menu">
-						{{ navbarItem .Path (.T "Profile") (printf "/u/%d" .Context.User.ID) }}
-						{{ navbarItem .Path (.T "Friends") "/friends" }}
-						{{ navbarItem .Path (.T "Settings") "/settings" }}
-						{{ navbarItem .Path (.T "Log out") (printf "/logout?k=%s" (.Session.Get "logout")) }}
+						{{ navbarItem .Path (.T "主页") (printf "/u/%d" .Context.User.ID) }}
+						{{ navbarItem .Path (.T "好友") "/friends" }}
+						{{ navbarItem .Path (.T "设定") "/settings" }}
+						{{ navbarItem .Path (.T "拜拜！") (printf "/logout?k=%s" (.Session.Get "logout")) }}
 					</div>
 				</div>
 			{{ else }}
-				{{ navbarItem .Path (.T "Log in") "/login" }}
-				{{ navbarItem .Path (.T "Register") "/register" }}
+				{{ navbarItem .Path (.T "登录") "/login" }}
+				{{ navbarItem .Path (.T "注册！") "/register" }}
 			{{ end }}
 		</div>
 	</div>

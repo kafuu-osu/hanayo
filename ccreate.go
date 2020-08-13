@@ -1,11 +1,11 @@
 package main
 
 import (
-	"fmt"
 	"database/sql"
+	"fmt"
+	"regexp"
 	"strconv"
 	"strings"
-	"regexp"
 
 	"github.com/gin-gonic/gin"
 )
@@ -32,7 +32,6 @@ func ccreateSubmit(c *gin.Context) {
 		return
 	}
 
-
 	// check whether name already exists
 	if db.QueryRow("SELECT 1 FROM clans WHERE name = ?", c.PostForm("name")).
 		Scan(new(int)) != sql.ErrNoRows {
@@ -46,15 +45,14 @@ func ccreateSubmit(c *gin.Context) {
 		ccreateResp(c, errorMessage{T(c, "Someone already took that TAG!")})
 		return
 	}
-	
-	
+
 	// recaptcha verify
 
 	tag := "0"
-		if c.PostForm("tag") != "" {
-			tag = c.PostForm("tag")
-		}
-	
+	if c.PostForm("tag") != "" {
+		tag = c.PostForm("tag")
+	}
+
 	// The actual registration.
 
 	res, err := db.Exec(`INSERT INTO clans(name, description, icon, tag)
@@ -69,8 +67,6 @@ func ccreateSubmit(c *gin.Context) {
 
 	db.Exec("INSERT INTO `user_clans`(user, clan, perms) VALUES (?, ?, 8);", getContext(c).User.ID, lid)
 
-
-
 	addMessage(c, successMessage{T(c, "Clan created.")})
 	getSession(c).Save()
 	c.Redirect(302, "/c/"+strconv.Itoa(int(lid)))
@@ -80,20 +76,18 @@ func ccreateResp(c *gin.Context, messages ...message) {
 	resp(c, 200, "clans/create.html", &baseTemplateData{
 		TitleBar:  "Create your clan",
 		KyutGrill: "clans.jpg",
-		Scripts:   []string{"https://www.google.com/recaptcha/api.js"},
 		Messages:  messages,
 		FormData:  normaliseURLValues(c.Request.PostForm),
 	})
 }
 
 func ccreationEnabled() bool {
-	var enabled bool
-	db.QueryRow("SELECT value_int FROM system_settings WHERE name = 'ccreation_enabled'").Scan(&enabled)
-	return enabled
+	//var enabled bool
+	//db.QueryRow("SELECT value_int FROM system_settings WHERE name = 'ccreation_enabled'").Scan(&enabled)
+	return true
 }
 
 // Check User In Query Is Same As User In Y Cookie
-
 
 func ccin(s string, ss []string) bool {
 	for _, x := range ss {

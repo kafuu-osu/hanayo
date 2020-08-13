@@ -11,7 +11,7 @@
 				window.userID = {{ .id }};
 			</script>
 			{{ if after .silence_info.end }}
-				<div class="ui error centered message">{{ $global.T "User is <b>silenced</b> for %s, expires %s." (.silence_info.reason | htmlescaper) (time .silence_info.end) | html }}</div>
+				<div class="ui error centered message">{{ $global.T "用户被<b>禁言了！</b> 原因是： %s, 过期时间： %s." (.silence_info.reason | htmlescaper) (time .silence_info.end) | html }}</div>
 			{{ end }}
 			{{ if hasAdmin $global.Context.User.Privileges }}
 				{{ $restr := not (has .privileges 1) }}
@@ -19,14 +19,14 @@
 				{{ $pend  := has .privileges 1048576 }}
 				{{ if and $disab $restr }}
 					{{ if $pend }}
-						<div class="ui warning centered message">{{ $global.T "User is <b>%s</b>" "pending verification" | html }}.</div>
+						<div class="ui warning centered message">{{ $global.T "此用户 <b>%s</b>" "等待验证！" | html }}.</div>
 					{{ else }}
-						<div class="ui error centered message">{{ $global.T "User is <b>%s</b>" "banned" | html }}.</div>
+						<div class="ui error centered message">{{ $global.T "此用户 <b>%s</b>" "被ban了！" | html }}.</div>
 					{{ end }}
 				{{ else if $restr }}
-					<div class="ui error centered message">{{ $global.T "User is <b>%s</b>" "restricted" | html }}.</div>
+					<div class="ui error centered message">{{ $global.T "此用户 <b>%s</b>" "被restricted了！" | html }}.</div>
 				{{ else if $disab }}
-					<div class="ui error centered message">{{ $global.T "User is <b>%s</b>" "locked" | html }}.</div>
+					<div class="ui error centered message">{{ $global.T "此用户 <b>%s</b>" "被locked了！" | html }}.</div>
 				{{ end }}
 			{{ end }}
 			{{ with $global.Get "users/userpage?id=%.0f" .id }}
@@ -139,9 +139,9 @@ starteffect()
 						{{ $oof := . }}
 						
 						{{ if eq $oof.clan.name "" }}
-						{{ $global.T "Clan: None" }}
+						{{ $global.T "没有加入战队" }}
 						{{ else }}
-						{{ $global.T "Clan: %s" ($oof.clan.name) }}
+						{{ $global.T "战队: %s" ($oof.clan.name) }}
 						{{ end }}
 						
 						{{ if .username_aka }}
@@ -152,7 +152,7 @@ starteffect()
 						{{ with bgetv1 "isOnline?id=%.0f" .id }}
 							<div class="subtitle">
 								<i class="{{ if .result }}green{{ else }}red{{ end }} circle icon"></i>
-								{{ if .result }}{{ $global.T "Online" }}{{ else }}{{ $global.T "Offline" }}{{ end }}
+								{{ if .result }}{{ $global.T "当前在线" }}{{ else }}{{ $global.T "当前离线" }}{{ end }}
 							</div>
 						{{ end }}
 					</div>
@@ -175,7 +175,7 @@ starteffect()
 								</a>
 							{{ end }}
 							{{ if hasAdmin $global.Context.User.Privileges }}
-								<a href="https://old.ussr.pl/index.php?p=103&id={{ $global.UserID }}"
+								<a href="https://admin.kafuu.pro/index.php?p=103&id={{ $global.UserID }}"
 									target="_blank" title="Quick edit" class="ui circular mini blue icon button">
 									<i class="folder open outline icon"></i>
 								</a>
@@ -200,7 +200,7 @@ starteffect()
 					<div class="row">
 						<div class="column">				
 						
-					{{ $global.T "<b>%s</b> is a" .username | html}} 
+					{{ $global.T "<b>%s</b> 是服务器的" .username | html}} 
 
 				{{ $owner := (has .privileges 3145727) }}
 				{{ $cm := (has .privileges 2883911) }}
@@ -210,40 +210,40 @@ starteffect()
 				{{ $member := (has .privileges 3) }}
 					
 					{{ if $owner }}
-					{{ $global.T "kafuu-osu! %s" "Owner" }}
+					{{ $global.T  "[所有者]！" }}
 					{{ else }}
 					{{ if $cm }}
-					{{ $global.T "kafuu-osu! %s" "Community Manager" }}
+					{{ $global.T  "[社区管理员]！" }}
 					{{ else }}
 					{{ if $admin }}
-					{{ $global.T "kafuu-osu! %s" "Admin" }}
+					{{ $global.T  "[管理员]！" }}
 					{{ else }}
 					{{ if $dev }}
-					{{ $global.T "kafuu-osu! %s" "Developer" }}
+					{{ $global.T  "[开发者]！" }}
 					{{ else }}
 					{{ if $bat }}
-					{{ $global.T "kafuu-osu! %s" "BAT" }}
+					{{ $global.T "[谱面管理员]！" }}
 					{{ else }}
 					{{ if $member }}
-					{{ $global.T "kafuu-osu! %s" "Player" }}
+					{{ $global.T  "[玩家]！" }}
 					{{ else }}
 					{{end}}{{end}}{{end}}{{end}}{{end}}{{end}}
 
-							{{ $global.T "from <b>%s</b>." (country .country true) | html }}
-							<br>{{ $global.T "They signed up on kafuu-osu! %s." (time $user.registered_on) | html }}
-							<br>{{ $global.T "Last seen: %s." (time $user.latest_activity) | html }}
-							<br>{{ with playstyle .play_style $global }}{{ $global.T "They play with %s." . }}{{ end }}
+							{{ $global.T "“我来自 <b>%s</b>”" (country .country true) | html }}
+							<br>{{ $global.T "注册时间： %s." (time $user.registered_on) | html }}
+							<br>{{ $global.T "最后一次登录： %s." (time $user.latest_activity) | html }}
+							<br>{{ with playstyle .play_style $global }}{{ $global.T "他用这些东西玩： %s." . }}{{ end }}
 						</div>
-							<meta name="og:image" content="https://a.ussr.pl/{{$user.id}}"/>
+							<meta name="og:image" content="https://a.kafuu.pro/{{$user.id}}"/>
  							<meta property="og:type" content="website" />
-							<meta property="og:url" content="https://ussr.pl/u/{{$user.id}}" />
+							<meta property="og:url" content="https://old.kafuu.pro/u/{{$user.id}}" />
 							<meta property="og:title" content={{ $global.T "<b>%s</b>" .username}} />
 							<meta property="og:description" content={{ $global.T "<b>%s</b> is a kafuu-osu! player from <b>%s</b>." .username (country .country true)}} />
-							<meta property="og:image" content="https://a.ussr.pl/{{$user.id}}" />
+							<meta property="og:image" content="https://old.kafuu.pro/{{$user.id}}" />
 							
 						<div class="column">
 							{{ if and (not .badges) (not .custom_badge) }}
-								{{ $global.T "This user hasn't got any badges!" }}
+								{{ $global.T "啊哈，没有badge" }}
 							{{ else }}
 								<div class="ui grid">
 									{{ range .badges }}
@@ -267,16 +267,15 @@ starteffect()
 								<div data-mode="{{ $k }}" {{ if ne $k (int $favouritemode) }} hidden{{ end }}>
 									<table class="ui very basic two column compact table nopad">
 										<tbody>
-											
 											{{ with .global_leaderboard_rank }}
 												<tr>
-													<td><b>{{ $global.T "Global rank" }}</b></td>
+													<td><b>{{ $global.T "世界排行" }}</b></td>
 													<td class="right aligned">#{{ . }}</td>
 												</tr>
 											{{ end }}
 											{{ with .country_leaderboard_rank }}
 												<tr>
-													<td><b>{{ $global.T "Country rank" }} &nbsp;{{ country $user.country false }}</b></td>
+													<td><b>{{ $global.T "国家排行" }} &nbsp;{{ country $user.country false }}</b></td>
 													<td class="right aligned">#{{ . }}</td>
 												</tr>
 											{{ end }}
@@ -285,11 +284,11 @@ starteffect()
 												<td class="right aligned">{{ humanize .pp }}</td>
 											</tr>
 											<tr>
-												<td><b>{{ $global.T "Ranked score" }}</b></td>
+												<td><b>{{ $global.T "Ranked分数" }}</b></td>
 												<td class="right aligned">{{ humanize .ranked_score }}</td>
 											</tr>
 											<tr>
-												<td><b>{{ $global.T "Total score" }}</b></td>
+												<td><b>{{ $global.T "总分" }}</b></td>
 												<td class="right aligned">{{ humanize .total_score }}</td>
 											</tr>
 											<tr>
@@ -297,22 +296,22 @@ starteffect()
 												<td class="right aligned">{{ humanize .playcount }}</td>
 											</tr>
 											<tr>
-												<td><b>{{ $global.T "Max combo" }}</b></td>
+												<td><b>{{ $global.T "最高连击数" }}</b></td>
 												<td class="right aligned">{{ $maxcombo.combo }}</td>
 											</tr>
 											<tr>
-												<td><b>{{ $global.T "Followers" }}</b></td>
+												<td><b>{{ $global.T "粉丝" }}</b></td>
 												<td class="right aligned">{{ with $.Get "users/followers?userid=%d" $.UserID }} {{ .subscount }} {{ end }} </td>
 											</tr>
 											<tr>
-												<td><b>{{ $global.T "Replays watched" }}</b></td>
+												<td><b>{{ $global.T "回放被观看次数" }}</b></td>
 												<td class="right aligned">{{ humanize .replays_watched }}</td>
 											</tr>
 											<tr>
 												<td><b>{{ $global.T "Total hits" }}</b></td>
 												<td class="right aligned">{{ humanize .total_hits }}</td>
 											</tr>									<tr>
-												<td><b>{{ $global.T "Accuracy" }}</b></td>
+												<td><b>{{ $global.T "准确率" }}</b></td>
 												<td class="right aligned">{{ printf "%.2f" .accuracy }}%</td>
 											</tr>
 										</tbody>

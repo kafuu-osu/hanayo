@@ -325,9 +325,9 @@ function initialiseScores(el, mode) {
 	mostPlayedBeatmapsTable.attr("data-type", "most-played");
 	recent.addClass("no bottom margin");
 	el.append($("<div class='ui segments no bottom margin' />").append(
-		$("<div class='ui segment' />").append("<h2 class='ui header'>	" + T("Best scores") + "</h2>", best),
-		$("<div class='ui segment' />").append("<h2 class='ui header'>" + T("Most played beatmaps") + "</h2>", mostPlayedBeatmapsTable),
-		$("<div class='ui segment' />").append("<h2 class='ui header'>" + T("Recent scores") + "</h2>", recent)
+		$("<div class='ui segment' />").append("<h2 class='ui header'>	" + T("好牛的成绩") + "</h2>", best),
+		$("<div class='ui segment' />").append("<h2 class='ui header'>" + T("玩最多的图") + "</h2>", mostPlayedBeatmapsTable),
+		$("<div class='ui segment' />").append("<h2 class='ui header'>" + T("最近的成绩") + "</h2>", recent)
 	));
 	loadScoresPage("best", mode);
 	loadScoresPage("recent", mode);

@@ -523,7 +523,7 @@ body {
   padding: 0px;
   overflow-x: hidden;
   min-width: 320px;
-  background: #353535;
+  background: #F4F4F4;
   font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-size: 14px;
   line-height: 1.4285em;
@@ -1526,7 +1526,7 @@ input::selection {
 .ui.basic.inverted.buttons .button,
 .ui.basic.inverted.button {
   background-color: transparent !important;
-  color: #424242 !important;
+  color: #F4F4F4 !important;
   box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
 }
 
@@ -12083,7 +12083,7 @@ img.ui.bordered.image {
   line-height: 1;
   vertical-align: baseline;
   margin: 0em 0.14285714em;
-  background-color: #595959;
+  background-color: #F4F4F4;
   background-image: none;
   padding: 0.5833em 0.833em;
   color: rgba(255, 255, 255, 0.8);
@@ -12228,7 +12228,7 @@ a.ui.label {
   max-width: 9999px;
   vertical-align: baseline;
   text-transform: none;
-  background: #595959;
+  background: #F4F4F4;
   padding: 0.5833em 0.833em 0.5833em 0.5em;
   border-radius: 0.28571429rem;
   box-shadow: none;
@@ -12305,7 +12305,7 @@ a.ui.label {
   margin: 0em;
   padding: 0em;
   text-align: center;
-  border-color: #595959;
+  border-color: #F4F4F4;
   width: 4em;
   height: 4em;
   z-index: 1;
@@ -19878,7 +19878,7 @@ ol.ui.horizontal.list li:before,
   display: flex;
   margin: 1rem 0em;
   font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  background: #595959;
+  background: #F4F4F4;
   font-weight: normal;
   border: 1px solid rgba(34, 36, 38, 0.15);
   box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
@@ -22694,7 +22694,7 @@ Floated Menu / Item
 
 .ui.table thead th {
   cursor: auto;
-  background: #424242;
+  background: #F4F4F4;
   text-align: inherit;
   color: rgba(255, 255, 255, 0.93);
   padding: 0.92857143em 0.78571429em;
@@ -22731,7 +22731,7 @@ Floated Menu / Item
 .ui.table tfoot th {
   cursor: auto;
   border-top: 1px solid rgba(34, 36, 38, 0.15);
-  background: #424242;
+  background: #F4F4F4;
   text-align: inherit;
   color: rgba(255, 255, 255, 0.93);
   padding: 0.78571429em 0.78571429em;
@@ -27413,7 +27413,7 @@ a.ui.card:hover,
 
 .ui.checkbox .box:active::before,
 .ui.checkbox label:active::before {
-  background: #424242;
+  background: #F4F4F4;
   border-color: rgba(34, 36, 38, 0.35);
 }
 
@@ -30042,7 +30042,7 @@ select.ui.dropdown {
 ---------------*/
 
 .ui.modal > .actions {
-  background: #424242;
+  background: #F4F4F4;
   padding: 1rem 1rem;
   border-top: 1px solid rgba(34, 36, 38, 0.15);
   text-align: right;
@@ -31687,7 +31687,7 @@ a.ui.nag {
 }
 
 .ui.inverted.progress .bar > .progress {
-  color: #424242;
+  color: #F4F4F4;
 }
 
 .ui.inverted.progress > .label {
@@ -32175,7 +32175,7 @@ a.ui.nag {
 
 .ui.search > .results .result:hover,
 .ui.category.search > .results .category .result:hover {
-  background: #424242;
+  background: #F4F4F4;
 }
 
 .ui.search .action:hover {
@@ -32525,7 +32525,7 @@ body.pushable {
 }
 
 body.pushable > .pusher {
-  background: #353535;
+  background: #F4F4F4;
 }
 
 /* Pusher should inherit background from context */

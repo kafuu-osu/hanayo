@@ -216,7 +216,7 @@
 
 .ui.search > .results .result:hover,
 .ui.category.search > .results .category .result:hover {
-  background: #424242;
+  background: #F4F4F4;
 }
 .ui.search .action:hover {
   background: #E0E0E0;

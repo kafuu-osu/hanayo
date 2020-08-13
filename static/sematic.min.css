@@ -1034,7 +1034,7 @@
  .ui.basic.inverted.button,
  .ui.basic.inverted.buttons .button {
      background-color: transparent!important;
-     color: #424242!important;
+     color: #F4F4F4!important;
      box-shadow: 0 0 0 2px rgba(255, 255, 255, .5) inset!important
  }
  
@@ -10434,7 +10434,7 @@ i.flag.ussr:before {
      line-height: 1;
      vertical-align: baseline;
      margin: 0 .14285714em;
-     background-color: #595959;
+     background-color: #F4F4F4;
      background-image: none;
      padding: .5833em .833em;
      color: rgba(255, 255, 255, .8);
@@ -10551,7 +10551,7 @@ i.flag.ussr:before {
      max-width: 9999px;
      vertical-align: baseline;
      text-transform: none;
-     background: #595959;
+     background: #F4F4F4;
      padding: .5833em .833em .5833em .5em;
      border-radius: .28571429rem;
      box-shadow: none
@@ -10620,7 +10620,7 @@ i.flag.ussr:before {
      margin: 0;
      padding: 0;
      text-align: center;
-     border-color: #595959;
+     border-color: #F4F4F4;
      width: 4em;
      height: 4em;
      z-index: 1;
@@ -16561,7 +16561,7 @@ i.flag.ussr:before {
      display: flex;
      margin: 1rem 0;
      font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-     background: #595959;
+     background: #F4F4F4;
      font-weight: 400;
      border: 1px solid rgba(34, 36, 38, .15);
      box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .15);
@@ -18785,7 +18785,7 @@ i.flag.ussr:before {
  
  .ui.table thead th {
      cursor: auto;
-     background: #424242;
+     background: #F4F4F4;
      text-align: inherit;
      color: rgba(255, 255, 255, .93);
      padding: .92857143em .78571429em;
@@ -18820,7 +18820,7 @@ i.flag.ussr:before {
  .ui.table tfoot th {
      cursor: auto;
      border-top: 1px solid rgba(34, 36, 38, .15);
-     background: #424242;
+     background: #F4F4F4;
      text-align: inherit;
      color: rgba(255, 255, 255, .93);
      padding: .78571429em;
@@ -22334,7 +22334,7 @@ i.flag.ussr:before {
  
  .ui.checkbox .box:active::before,
  .ui.checkbox label:active::before {
-     background: #424242;
+     background: #F4F4F4;
      border-color: rgba(34, 36, 38, .35)
  }
  
@@ -24244,7 +24244,7 @@ i.flag.ussr:before {
  }
  
  .ui.modal>.actions {
-     background: #424242;
+     background: #F4F4F4;
      padding: 1rem;
      border-top: 1px solid rgba(34, 36, 38, .15);
      text-align: right
@@ -25492,7 +25492,7 @@ i.flag.ussr:before {
  }
  
  .ui.inverted.progress .bar>.progress {
-     color: #424242
+     color: #F4F4F4
  }
  
  .ui.inverted.progress>.label {
@@ -25875,7 +25875,7 @@ i.flag.ussr:before {
  
  .ui.category.search>.results .category .result:hover,
  .ui.search>.results .result:hover {
-     background: #424242
+     background: #F4F4F4
  }
  
  .ui.search .action:hover {
@@ -26117,7 +26117,7 @@ i.flag.ussr:before {
  }
  
  body.pushable>.pusher {
-     background: #353535
+     background: #F4F4F4
  }
  
  .pushable>.pusher {

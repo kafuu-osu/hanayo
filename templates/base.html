@@ -8,7 +8,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title>{{ if .TitleBar }}{{ .T .TitleBar }} - {{ end }}kafuu-osu!</title>
+		<title>osu!Kafuu - {{ if .TitleBar }}{{ .T .TitleBar }}{{ end }}</title>
 
 		<link rel="stylesheet" type="text/css" href="/static/{{ if $ds }}dark/{{ end }}semantic.min.css?{{ unixNano }}">
 		<link rel="stylesheet" type="text/css" href="/static/ripple.css?{{ unixNano }}">
@@ -58,10 +58,10 @@
 
 			<div class="h-container">
 				<div class="ui margined container" id="messages-container">
-				<noscript>Research has proven this website works 10000% better if you have JavaScript enabled.</noscript>
+				<noscript>呵呵</noscript>
 				{{ if and .Context.User.Username (not (has .Context.User.Privileges 1)) }}
 					<div class="ui warning message">
-						{{ $.T "Your account is currently in restricted mode. You will not be able to do certain actions, and your profile can only be seen by you and by Ripple's staff. If you believe we have mistaken putting you in restricted mode, or a month has passed since you first saw this, then you can send an appeal at <a href='https://support.ripple.moe'>support.ripple.moe</a>." | html }}
+						{{ $.T "你号没了" | html }}
 					</div>
 				{{ end }}
 				{{ if .Messages }}
@@ -80,12 +80,12 @@
 				{{ end }}
 				{{ with $settings.game_maintenance.Int }}
 					<div class="ui warning message">
-						{{ $.T "kafuu-osu!'s score submission is currently in maintenance mode. You will not be allowed to submit scores for the time being." }}
+						{{ $.T "维护中！" }}
 					</div>
 				{{ end }}
 				{{ with $settings.website_maintenance.Int }}
 					<div class="ui warning message">
-						{{ $.T "The kafuu-osu! website is currently in maintenance mode. Only certain users are allowed to access the full website." }}
+						{{ $.T "维护中！" }}
 					</div>
 				{{ end }}
 				</div>
@@ -94,49 +94,9 @@
 
 		</div>
 
-		<div class="footer-bg">
-			<div class="ui container">
-				<div class="ui internally celled grid">
-					<div class="row">
-						<div class="three wide column">
-							<div class="footer-info-block">
-								<a class="footer-title">Help</a> 
-								<ul style="list-style-type: none; padding: 0; margin: 0;">
-									<li>
-										<i><a href="https://dl.ussr.pl/files/osu/ROS.exe">Server Switcher</a></i>
-										<i><a href="https://ussr.pl/doc">Documentation</a></i>
-									</li>
-								</ul>
-							</div> 
-						</div>
-						<div class="three wide column">
-							<div class="footer-info-block">
-								<a class="footer-title">Social</a>
-								<ul style="list-style-type: none; padding: 0; margin: 0;">
-									<li>
-										<i><a href="https://discord.gg/87E2K46" target="_blank">Discord</a></i>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="seven wide column">
-							<div class="footer-info-block">
-								<a class="footer-title">Source Code</a>
-								<ul style="list-style-type: none; padding: 0; margin: 0;">
-									<li>
-										<i><a href="https://github.com/kafuu-osu" target="_blank">GitHub</a></i>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="footer-logo">
-							<span style="color: white; font-size: 30px;">kafuu-osu!</span> 
-							<br>
-							<a class="subtitle" style="font-size: 15px; color: white;">osu! private server</a>
-						</div>
-					</div>
-				</div>
-			</div>
+		<div style="height: 60px; margin-top: 20px; padding: 10px 60px; background: #FFF3E0; display: flex; align-items: center;">
+				osu-kafuu 666
+		</div>
 		<script>
 			var hanayoConf = {
 				avatars:   {{ .Conf.AvatarURL }},

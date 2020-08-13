@@ -1,6 +1,6 @@
 {{/*###
 Handler=/
-TitleBar=Home Page
+TitleBar=HOmE
 KyutGrill=homepage2.jpg
 */}}
 {{ define "tpl" }}
@@ -29,138 +29,100 @@ KyutGrill=homepage2.jpg
 
 	<div class="ui container">
 		<div class=""> 
-		<div class="main-block">
-			<div class="woman"></div>
-			<div class="content">
-				<div class="status">
-					<span>
-						<span style="color: #4287f5;" class="counter-text"> {{ .T "%s" (rediget "ripple:registered_users")}} </span> total users
-					</span>
-					<span style="margin-left: 16px;">
-						<span class="counter-text" style="color: #eb4034;"> {{ .T "%s" (rediget "ripple:online_users")}} </span> online users
-					</span>
-				</div>
-				<br>
-				<span class="text-lg">
-					kafuu-osu!
-				</span>
-				<span class="text-sm">
-					<b>Welcome to kafuu-osu!</b>
-	
-	
-					kafuu-osu! is a private osu! server with everything Bancho has to offer, Relax leaderboards and more! We have our own community, Relax leaderboards, Relax profiles, Relax PP system, our own beatmap ranking and a dedicated leadership team. Why hesitate? Join kafuu-osu! now!
-				</span>
-				<div class="buttons">
-					{{ if not .Context.User.ID }}
-						<a href="/register" class="home-btn btn-key" >Register</a>
-					{{end}}
-					<a href="https://dl.ussr.pl/files/osu/ROS.exe" class="home-btn btn-how" style="margin-left: 6px;">Server Switcher</a>
-				</div>
+		<div class="main-block" style="height: 800px; background-color: #E3F2FD; padding: 20px; align-items: center; justify-content: center; font-size: 36px; flex-direction: column; border: 1px solid #353535; font-weight: lighter;">
+			<div>欢迎来到osu-kafuu!</div>
+			<div style="font-size: 16px; padding: 40px;"><div>这个网站是临时的，所以就是这么简陋。。（我懒得弄了）</div>
+			<div>新网站即将推出</div>
+			<div>反正目前服务器支持标准模式，Relax，AP三种模式！</div>
+			<div>目前最多允许开三个小号，开多了全ban掉。</div>
+				<div class="ui centered segments" style="padding: 20px;">
+	<p>我开发此服务器的目标是搞一个高水平训练服务器，旨在帮助玩家提升屙屎水平</p>
+	<p>目前只有基础的功能：注册登录、排行榜、osu!Direct（会根据ip所在地自动选择镜像，中国大陆地区将使用sayobot作为direct源）、机器人（游戏内打!help查看所有命令，比如用!ppboard把游戏内原本展示分数的排行榜变为展示pp的榜）、mp命令（!mp help，!mp make）、旁观、回放（正常）、中文名也可以搞，但是我不知都需不需要？</p>
+	<p>目前基础的游戏模式：标准模式、relax模式、ap模式</p>
+	<p>所有的图都有排行榜，love有pp</p>
+	<p>待实现的东西：新网站、服务器反作弊、官服成绩导入、训练计划、score v2游戏模式、自定义pp算法</p>
+	<p>现在是搞测试中，有啥问题可以来问我</p>
+	</div>
+	<div style="font-weight: bold;">连接服务器的方式目前有三种（任选其一）：</div>
+	<br>
+	<div><a href="https://dl.kafuu.pro/switcher.exe">1（最普遍的方法）、服务器切换器，需要更改hosts、安装证书的服务器切换器（与osu.ppy.sb和其他私服一致，修改hosts后在游戏时无法查看osu官网，无法挂梯子连接服务器）</a></div>
+	<br>
+	<div><a href="https://dl.kafuu.pro/kafuu.exe">2（推荐）、定制的osu客户端！（放入osu目录中运行 [如果直接运行会下载全新的客户端。。]，与官服不冲突，无封号风险，不修改系统设置，游戏时可查看osu官网，可以挂梯子连接服务器）</a></div>
+	<br>
+	<div>3、（需要教程，还没写）客户端补丁器，会创建一个osu.exe的副本，与定制客户端基本相同，但是有些地方不太齐全（如连接跳转）</div>
+	<div>人工客服：可加入pr群（233283633）或osuKafuu群（955377404）</div>
 			</div>
 		</div>
 	{{/* MarginBoi */}}
 	<br> 
 	{{/* Global Statistics */}}
 	<div class="ui stackable column divided grid" id="first-grid">
-		<div class="five wide column">
-			<div class="ui segments" style="height: 100%;">
+		<div class="eight wide column" >
+			<div class="ui segments" style="height: 100%; padding: 20px; font-size: 20px !important;">
 				<div class="sixteen wide column" style="margin-bottom: 11px;">
-					<div class="ui blue segment">
 						<div class="ui grid">
-							<div class="four wide column">
-								<i class="user icon status-icon"></i>
-							</div>
 							<div class="twelve wide column">
-								{{ range $key, $value := (qb "SELECT COUNT(*) FROM users WHERE privileges >= 3") }}
-								<p class="status-head">{{ rediget "ripple:online_users" }} / {{ $value }}</p>
-								{{ end }}
-								<p class="status-footer">{{ .T "Online / Registered" }}</p>
+								<div>{{ range $key, $value := (qb "SELECT COUNT(*) FROM users WHERE privileges >= 3") }}
+								{{ rediget "ripple:online_users" }} / {{ $value }}
+								{{ end }}</div>
+								<div>在线人数 / 注册人数</div>
 							</div>
 						</div>
-					</div>
 				</div>
 			<div class="sixteen wide column" style="margin-bottom: 11px;">
-				<div class="ui orange segment">
 					<div class="ui grid">
-						<div class="four wide column">
-							<i class="user plus icon status-icon"></i>
-						</div>
 						<div class="twelve wide column">
-							{{ range $key, $value := (qb "SELECT username FROM users WHERE privileges >=3 ORDER BY id DESC LIMIT 1") }}
+
+							最新玩家：
+														{{ range $key, $value := (qb "SELECT username FROM users WHERE privileges >=3 ORDER BY id DESC LIMIT 1") }}
 							{{ range $key, $valu := (qb "SELECT id FROM users WHERE privileges >=3 ORDER BY id DESC LIMIT 1") }}
-							<p class="status-head" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
 								<a href="/u/{{ $valu }}" style="color: inherit;">{{ $value }}</a>
-							</p>
 							{{ end }}
 							{{ end }}
-							<p class="status-footer">{{ .T "Latest Player" }}</p>
 						</div>
-					</div>
 			  </div>
 			  <div class="sixteen wide column">
-                <div class="ui green segment">
                     <div class="ui grid">
-                        <div class="four wide column">
-                            <i class="user icon status-icon"></i>
-                        </div>
                         <div class="twelve wide column">
                              {{ $value := (qb "SELECT ROUND(SUM(scores.pp)) AS pp FROM scores INNER JOIN users ON scores.userid = users.id WHERE scores.completed = 3 AND scores.play_mode = 0 AND users.privileges > 2") }}
-                        <p class="status-head">{{ $value.pp }}</p>
-                        <p class="status-footer">{{ .T "Total PP" }}</p>
+                        
+                        服务器PP总数：{{$value.pp}}
                         </div>
-                    </div>
                 </div>
             </div>
 		</div>
 	</div>
 </div>
-	<div class="six wide column">
-		<iframe src="https://discordapp.com/widget?id=447073072827334656&theme=dark" id="ds-widget" allowtransparency="true" frameborder="0" style="width: 100%;height: 100%;"></iframe>
-	</div>
-	<div class="five wide column">
-		<div class="ui segments" style="height: 100%;">
+
+	<div class="eight wide column">
+		<div class="ui segments" style="height: 100%; padding: 20px;">
 			<div class="sixteen wide column" style="margin-bottom: 11px;">
-				<div class="ui yellow segment">
 					<div class="ui grid">
-						<div class="four wide column">
-							<i class="thumbs up icon status-icon"></i>
-						</div>
 						<div class="twelve wide column">
 							{{ $d := (qb "SELECT ROUND(pp) AS pp, users.username, users.id FROM scores INNER JOIN users ON scores.userid = users.id WHERE scores.play_mode = 0 AND completed = 3 AND users.privileges > 2 ORDER BY pp DESC LIMIT 1") }}
 							<p class="status-head">{{ $d.pp }}pp</p>
 							<p class="status-head" style="font-size: 10px!important;">{{ .T "Done by " }}<a href="/u/{{ $d.id }}">{{ $d.username }}</a></p>
-							<p class="status-footer">{{ .T "Top Score" }}</p>
+							<p class="status-footer">{{ .T "最高STD成绩" }}</p>
 						</div>
-					</div>
 				</div>
 			</div>
 			<div class="sixteen wide column" style="margin-bottom: 11px;">
-				<div class="ui pink segment">
 					<div class="ui grid">
-						<div class="four wide column">
-							<i class="thumbs up icon status-icon"></i>
-						</div>
 						<div class="twelve wide column">
 							{{ $rx := (qb "SELECT ROUND(pp) AS pp, users.username, users.id FROM scores_relax INNER JOIN users ON scores_relax.userid = users.id WHERE scores_relax.play_mode = 0 AND completed = 3 AND users.privileges > 2 ORDER BY pp DESC LIMIT 1") }}
 							<p class="status-head">{{ $rx.pp }}pp</p>
 							<p class="status-head" style="font-size: 10px!important;">{{ .T "Done by " }}<a href="/u/{{ $rx.id }}">{{ $rx.username }}</a></p>
-							<p class="status-footer">{{ .T "Top Relax Score" }}</p>
+							<p class="status-footer">{{ .T "最高RX成绩" }}</p>
 						</div>
-					</div>
 				</div>
 			</div>
 			<div class="sixteen wide column">
-				<div class="ui purple segment">
 					<div class="ui grid">
-						<div class="four wide column">
-							<i class="thumbs up icon status-icon"></i>
-						</div>
 						<div class="twelve wide column">
 							{{ $ap := (qb "SELECT ROUND(pp) AS pp, users.username, users.id FROM scores_ap INNER JOIN users ON scores_ap.userid = users.id WHERE scores_ap.play_mode = 0 AND completed = 3 AND users.privileges > 2 ORDER BY pp DESC LIMIT 1") }}
 							<p class="status-head">{{ $ap.pp }}pp</p>
 							<p class="status-head" style="font-size: 10px!important;">{{ .T "Done by " }}<a href="/u/{{ $ap.id }}">{{ $ap.username }}</a></p>
-							<p class="status-footer">{{ .T "Top Autopilot Score" }}</p>
-						</div>
+							<p class="status-footer">{{ .T "最高AP成绩" }}</p>
 					</div>
 				</div>
 			</div>
