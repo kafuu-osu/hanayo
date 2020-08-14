@@ -1,7 +1,7 @@
 {{ define "tpl" }}
 <div class="ui container">
 	{{ if .UserID }}
-		{{ $aoba := eq .UserID 1000 }}
+		{{ $realistik := eq .UserID 1000 }}
 		{{ $gqm := atoi (.Gin.Query "mode") }}
 		{{ $global := . }}
 		{{ with (.Get "users/apfull?id=%d" .UserID) }}
@@ -44,20 +44,20 @@
 						{{ if eq $global.UserID $global.Context.User.ID }}
 							<a href="/settings/avatar">
 						{{ end }}
-						{{ with bgetv1 "isOnline?id=%.0f" .id }}
-						{{ if .result }}
-							<img src="{{ config "AvatarURL" }}/{{ $global.UserID }}" alt="avatar" class="user avatar" style="border-radius: 50%; box-shadow: 0px 0px 15px #81ff55;">
-						{{ else }}
-							<img src="{{ config "AvatarURL" }}/{{ $global.UserID }}" alt="avatar" class="user avatar" style="border-radius: 50%; box-shadow: 0px 0px 15px #eb4034;">
-						{{ end }}
-					{{ end }}
+								{{ with bgetv1 "isOnline?id=%.0f" .id }}
+									{{ if .result }}
+										<img src="{{ config "AvatarURL" }}/{{ $global.UserID }}" alt="avatar" class="user avatar" style="border-radius: 50%; box-shadow: 0px 0px 15px #81ff55;">
+									{{ else }}
+										<img src="{{ config "AvatarURL" }}/{{ $global.UserID }}" alt="avatar" class="user avatar" style="border-radius: 50%; box-shadow: 0px 0px 15px #eb4034;">
+									{{ end }}
+								{{ end }}
 						{{ if eq $global.UserID $global.Context.User.ID }}
 							</a>
 						{{ end }}
 					</div>
 					<div class="table element">
 						<h1 class="ui header">
-							{{ if $aoba }}							
+							{{ if $realistik }}							
 							<b>
 
 <script>
@@ -160,7 +160,7 @@ starteffect()
 				<div class="magic table floating right">
 					<div class="table element">
 						{{ range $k, $v := (slice .std .taiko .ctb .mania) }}
-							<h1 data-mode="{{ $k }}"{{ if ne $k (int $favouritemode) }} hidden{{ end }}>{{ with and $v $v.global_leaderboard_rank }}#{{ . }}{{ else }}{{ $global.T "Not ranked" }}{{ end }}</h1>
+							<h1 data-mode="{{ $k }}"{{ if ne $k (int $favouritemode) }} hidden{{ end }}>{{ with and $v $v.global_leaderboard_rank }}#{{ . }}{{ else }}{{ $global.T "Unknown" }}{{ end }}</h1>
 						{{ end }}
 						<div id="profile-actions">
 							{{ if and (ne $global.Context.User.ID $global.UserID) (ne $global.Context.User.ID 0) }}
@@ -186,10 +186,10 @@ starteffect()
 			</div>
 			{{ $user := . }}
 			<div class="ui three item bottom attached menu" id="rx-menu" style="margin-bottom: 0;">
-					<a class="0 item" data-rx="0" href="/u/{{ $user.id }}">Regular</a>
-					<a class="1 item" data-rx="1" href="/rx/u/{{ $user.id }}">Relax</a>
-					<a class="1 item" data-rx="2" href="/ap/u/{{ $user.id }}">Autopilot</a>
-			</div>
+				<a class="0 item" data-rx="0" href="/u/{{ $user.id }}">Regular</a>
+				<a class="1 item" data-rx="1" href="/rx/u/{{ $user.id }}">Relax</a>
+				<a class="1 item" data-rx="2" href="/ap/u/{{ $user.id }}">Autopilot</a>
+		</div>
 			<div class="ui four item bottom attached menu" id="mode-menu">
 				{{ range $k, $v := modes }}
 					<a class="{{ favMode $favouritemode $k }}item" data-mode="{{ $k }}" href="/u/{{ $user.id }}?mode={{ $k }}">{{ $v }}</a>
@@ -263,7 +263,7 @@ starteffect()
 						</div>
 						<div class="column">
 							{{ range $k, $v := (slice .std .taiko .ctb .mania) }}
-							{{ $maxcombo := qb "SELECT FORMAT(scores_relax.max_combo,0) AS combo FROM scores_relax WHERE userid = ? ORDER BY max_combo DESC;" $.UserID}}
+							{{ $maxcombo := qb "SELECT FORMAT(scores.max_combo,0) AS combo FROM scores WHERE userid = ? ORDER BY max_combo DESC;" $.UserID}}
 								<div data-mode="{{ $k }}" {{ if ne $k (int $favouritemode) }} hidden{{ end }}>
 									<table class="ui very basic two column compact table nopad">
 										<tbody>
